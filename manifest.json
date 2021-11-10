@@ -1,16 +1,66 @@
 {
-  "name": "checkout-ui-settings",
+  "name": "b2b-checkout-settings",
   "vendor": "vtex",
-  "version": "0.1.0",
-  "title": "Checkout UI Settings",
-  "description": "Declare custom settings to be used by checkout ui",
+  "version": "0.0.0",
+  "title": "B2B Checkout Settings",
+  "description": "Adds B2B functionalities to the checkout",
   "builders": {
     "docs": "0.x",
-    "checkout-ui-custom": "0.x"
+    "checkout-ui-custom": "0.x",
+    "node": "6.x",
+    "vtex.storefront-permissions": "1.x"
+  },
+  "dependencies": {
+    "vtex.graphql-server": "1.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
   },
   "credentialType": "absolute",
+  "settingsSchema": {
+    "title": "B2B Checkout Settings",
+    "type": "object",
+    "properties": {
+      "showPONumber": {
+        "title": "Show Purchase Order Number",
+        "type": "boolean",
+        "default": false,
+        "description": "Enable the PO Number field at the checkout page"
+      },
+      "hasPONumber": {
+        "title": "Has PO Number setup",
+        "type": "boolean",
+        "default": false,
+        "description": "Would be true if PONumber is already set to the checkout"
+      }
+    }
+  },
+  "settingsUiSchema": {
+    "ui:order": [
+      "showPONumber",
+      "hasPONumber"
+    ],
+    "hasPONumber": {
+      "ui:widget": "hidden"
+    }
+  },
+  "policies": [
+    {
+      "name": "vtex.graphql-server:resolve-graphql"
+    },
+    {
+      "name": "update-app-settings"
+    },
+    {
+      "name": "SaveOrderFormConfiguration"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/checkout/pvt/configuration/orderForm"
+      }
+    }
+  ],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

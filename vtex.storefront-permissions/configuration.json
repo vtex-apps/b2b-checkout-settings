@@ -1,0 +1,23 @@
+{
+  "name": "B2B Checkout Settings",
+  "features": [
+    {
+      "label": "Can add shipping address",
+      "value": "add-shipping",
+      "roles": [
+        "store-admin",
+        "sales-admin",
+        "sales-manager"
+      ]
+    },
+    {
+      "label": "Can change profile",
+      "value": "change-profile",
+      "roles": [
+        "store-admin",
+        "sales-admin",
+        "sales-manager"
+      ]
+    }
+  ]
+}
