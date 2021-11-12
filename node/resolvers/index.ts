@@ -58,7 +58,6 @@ export const resolvers = {
           })
 
           // Check if checkout has b2b-checkout-settings app
-          console.log(`checkoutConfig?.apps.findIndex((app: any) => app.id === 'b2b-checkout-settings') =>`, checkoutConfig?.apps.findIndex((app: any) => app.id === 'b2b-checkout-settings'))
           if (checkoutConfig?.apps.findIndex((app: any) => app.id === 'b2b-checkout-settings') === -1) {
             checkoutConfig.apps.push({
               major: 1,
@@ -105,7 +104,6 @@ export const resolvers = {
             }
           )
           .catch((error: any) => {
-            console.log('Error =>', error)
             logger.error({
               message: 'checkUserPermission-error',
               error,
