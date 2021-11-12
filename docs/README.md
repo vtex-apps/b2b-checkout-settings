@@ -26,3 +26,8 @@ Once the app is deployed and installed in the account, every scripts contained i
 
 
 :warning: **Scripts used by Checkout are linked to the Checkout UI Settings version that's installed in your store**. If a prior app version was already installed and your want to change the scripts linked to it, you'll need to repeat the already existing code and thereafter launch the app's new version containing the changes you just did. Housekeeper is responsible for updating app versions in the accounts it's installed in.
+
+
+**Upcoming documentation:**
+
+ - [Adding PO Number](https://github.com/vtex-apps/b2b-checkout-settings/pull/2)
