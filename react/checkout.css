@@ -1,0 +1,328 @@
+/* Adress subtitle */
+
+.addressForm {
+  padding: 0;
+}
+
+.address {
+  margin-bottom: 24px;
+}
+
+.addressSummary {
+}
+
+.addressSummaryActive {
+}
+
+.addressSummaryActive :global .address-summary {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='#0176ff' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='#0176ff' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>")
+    no-repeat;
+  background-position: 12px 16px;
+  padding: 12px;
+  padding-left: 44px;
+  border: 1px solid #f4f4f4;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.addressSubtitle {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.deliveryTypesList {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.deliveryTypesOption {
+  width: 50%;
+}
+
+.addressFormPart1 {
+  display: grid;
+}
+
+.addressFormPart1 :global .loading-inline.icon-spinner {
+  position: absolute;
+}
+
+.addressFormPart1 :global input:focus ~ span.help.error {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.addressFormPart1 input {
+  width: 85px;
+  max-width: 85px;
+  transition: width 0.4s ease-in-out;
+}
+
+:global .input-mini + span.error {
+  white-space: pre;
+}
+
+:global p.input:not(.required) input.success:placeholder-shown {
+  background-image: none;
+}
+
+:global select.success {
+  background-image: url(/checkout/img/ico-ready.png);
+  background-position: right 10px top;
+  background-repeat: no-repeat;
+}
+
+:global p.input:not(.required) input.success[value=''] {
+  background-image: none;
+}
+
+.addressFormPart1.geolocation input {
+  width: 270px;
+  max-width: unset;
+  transition: width 0.4s ease-in-out;
+}
+
+.addressFormPart1 :global .loading-postal-code {
+  width: 85px;
+  max-width: 85px;
+}
+
+.addressFormPart1 small {
+  margin-left: 10px;
+}
+
+:global .ship-complement input {
+  width: 176px;
+}
+
+:global .ship-country select {
+  width: 100%;
+}
+
+:global .ship-checkboxNumber input {
+  margin-top: 27px;
+}
+
+@media (max-width: 490px) {
+  :global .ship-complement input {
+    width: 55%;
+  }
+}
+
+:global .ship-notApplicable {
+  flex: none;
+  display: flex;
+}
+
+:global .ship-checkboxNumberLabel {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 32%;
+  margin-left: 8px;
+  margin-top: 24px;
+}
+
+:global p.ship-number,
+:global p.ship-city {
+  margin-right: 10px;
+}
+
+:global p.ship-number,
+:global p.ship-city,
+:global p.ship-state {
+  float: left;
+}
+
+:global .ship-notApplicable {
+  flex: none;
+  display: flex;
+}
+
+:global .ship-checkboxNumberLabel {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 32%;
+  margin-left: 8px;
+  margin-top: 24px;
+}
+
+:global p.ship-name,
+:global p.ship-reference,
+:global p.ship-commercial,
+:global p.ship-neighborhood {
+  clear: both;
+}
+
+p.ship-receiverName {
+  clear: both;
+}
+
+.slideUp-enter {
+  top: 100%;
+}
+
+.slideUp-enter.slideUp-enter-active {
+  transition: top 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  top: 0;
+}
+
+.slideUp-leave {
+  top: 0;
+}
+
+.slideUp-leave.slideUp-leave-active {
+  transition: top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  top: 100%;
+}
+
+.Accordion-enter {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.Accordion-enter.Accordion-enter-active {
+  transition: max-height 0.3s ease-in;
+  max-height: 300px;
+}
+
+.Accordion-leave {
+  max-height: 300px;
+}
+
+.Accordion-leave.Accordion-leave-active {
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.slideLeft-enter {
+  position: fixed;
+  transform: translate3d(100vw, 0, 0);
+}
+
+.slideLeft-enter.slideLeft-enter-active {
+  transform: translate3d(100vw, 0, 0) translateX(-100%);
+  transition: transform 0.3s;
+}
+
+.slideLeft-leave {
+  transform: translate3d(100vw, 0, 0) translateX(-100%);
+  position: fixed;
+}
+
+.slideLeft-leave.slideLeft-leave-active {
+  transform: translate3d(100vw, 0, 0);
+  transition: transform 0.3s;
+}
+
+.opacity-enter {
+  opacity: 0.01;
+}
+
+.opacity-enter.opacity-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.opacity-leave {
+  opacity: 1;
+}
+
+.opacity-leave.opacity-leave-active {
+  opacity: 0.01;
+  transition: opacity 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.img-arrow-down {
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  margin-left: -9px;
+}
+
+.accordion-toggle .link-box-edit {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  padding: 4px 6px 2px;
+  border-radius: 0 6px;
+  background: #eee;
+  border-color: #eee;
+  color: #08c;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.submitPaymentButton {
+  text-align: right;
+}
+
+.hr {
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+@media (min-width: 768px) {
+  .hr {
+    margin: 0 -15px 20px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #e5e5e5;
+  }
+}
+
+.deliveryHr {
+  height: 2px;
+  margin: 5px 0;
+}
+
+.deliverTitle {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.mapStyles {
+  height: '120px';
+  margin-bottom: '10px';
+  width: '260px';
+}
+
+.backToAddressList {
+  display: block;
+  border: 1px dashed #bed0df;
+  margin-bottom: 10px;
+  padding: 5px 8px;
+  font-size: 12px;
+  width: 100%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.backToAddressList:hover {
+  text-decoration: none;
+  border-color: #005580;
+  color: #005580;
+}
+
+.linkEdit {
+  cursor: pointer;
+}
+
+/* Split */
+
+.btnDelivery,
+.btnDelivery:hover {
+  background: #368df7;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-shadow: none;
+  text-decoration: none;
+  width: 100%;
+}

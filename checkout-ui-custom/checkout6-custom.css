@@ -17,3 +17,14 @@
 .b2b-purchase-order-number input[type='text']:focus {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.4);
 }
+
+.client-profile-data a.link-box-edit,
+button.vtex-omnishipping-1-x-buttonEditAddress,
+button.vtex-omnishipping-1-x-buttonCreateAddress {
+  display: none;
+}
+body.change-profile .client-profile-data a.link-box-edit,
+body.edit-shipping button.vtex-omnishipping-1-x-buttonEditAddress,
+body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress {
+  display: block;
+}

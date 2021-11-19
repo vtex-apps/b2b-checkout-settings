@@ -27,8 +27,9 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-vtex": "^2.1.0",
     "typescript": "3.9.7",
-    "vtex.b2b-organizations-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations-graphql@0.0.3/public/@types/vtex.b2b-organizations-graphql",
-    "vtex.graphql-server": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.graphql-server@1.66.9/public/_types/react"
+    "vtex.b2b-checkout-settings": "https://wender--sandboxusdev.myvtex.com/_v/private/typings/linked/v1/vtex.b2b-checkout-settings@0.1.0+build1637004411/public/_types/react",
+    "vtex.checkout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout@0.6.0/public/_types/react",
+    "vtex.graphql-server": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.graphql-server@1.66.12/public/_types/react"
   },
   "scripts": {
     "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'"

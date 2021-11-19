@@ -18,6 +18,26 @@ const QUERIES = {
       permissions
     }
   }`,
+  getAddresses: `query addressByCostCenter($id: ID!) {
+    getCostCenterById(id: $id) {
+      addresses {
+        addressId
+        addressType
+        addressQuery
+        postalCode
+        country
+        receiverName
+        city
+        state
+        street
+        number
+        complement
+        neighborhood
+        geoCoordinates
+      }
+    }
+  }
+  `,
 }
 
 const DEFAULTS = {
@@ -29,7 +49,7 @@ export const resolvers = {
   Routes: {
     settings: async (ctx: Context) => {
       const {
-        clients: { apps, graphQLServer, checkout },
+        clients: { apps, graphQLServer, checkout, session },
         vtex: { logger, storeUserAuthToken, production },
       } = ctx
 
@@ -50,7 +70,7 @@ export const resolvers = {
         const accountSettings = await apps.getAppSettings(app)
 
         if (accountSettings?.showPONumber && !accountSettings?.hasPONumber) {
-          const checkoutConfig: any  = await checkout.getOrderFormConfiguration().catch((error) => {
+          const checkoutConfig: any = await checkout.getOrderFormConfiguration().catch((error) => {
             logger.error({
               message: 'getOrderformConfiguration-error',
               error,
@@ -65,18 +85,16 @@ export const resolvers = {
               fields: ['purchaseOrderNumber'],
             })
 
-            const setCheckoutConfig: any = await checkout.setOrderFormConfiguration(
-              checkoutConfig,
-              ctx.vtex.authToken
-            )
-            .then( () => true )
-            .catch( (error) => {
-              logger.error({
-                message: 'setOrderformConfiguration-error',
-                error,
+            const setCheckoutConfig: any = await checkout
+              .setOrderFormConfiguration(checkoutConfig, ctx.vtex.authToken)
+              .then(() => true)
+              .catch((error) => {
+                logger.error({
+                  message: 'setOrderformConfiguration-error',
+                  error,
+                })
+                return false
               })
-              return false
-            } )
 
             if (setCheckoutConfig) {
               accountSettings.hasPONumber = true
@@ -109,6 +127,8 @@ export const resolvers = {
               error,
             })
 
+            console.log('checkUserPermission-error =>', error)
+
             return {
               data: {
                 checkUserPermission: null,
@@ -116,10 +136,62 @@ export const resolvers = {
             }
           })
 
+        const token = ctx.vtex.sessionToken ?? ctx.request.header?.sessiontoken
+
+        const userSession = await session
+          .getSession(token as string, ['*'])
+          .then((currentSession: any) => {
+            return currentSession.sessionData
+          })
+          .catch(() => null)
+
         const settings = {
           ...DEFAULTS,
           ...accountSettings,
           ...checkUserPermission,
+        }
+
+        if (userSession?.namespaces?.['storefront-permissions']?.costcenter?.value) {
+          const {
+            data: { getCostCenterById },
+          }: any = await graphQLServer
+            .query(
+              QUERIES.getAddresses,
+              {
+                id: userSession.namespaces['storefront-permissions'].costcenter.value,
+              },
+              {
+                persistedQuery: {
+                  provider: 'vtex.b2b-organizations-graphql@0.x',
+                  sender: 'vtex.b2b-checkout-settings@0.x',
+                },
+              }
+            )
+            .then((res: any) => {
+              return {
+                data: {
+                  getCostCenterById: {
+                    addresses: res?.data?.getCostCenterById?.addresses,
+                  },
+                },
+              }
+            })
+            .catch((error: any) => {
+              logger.error({
+                message: 'getCostCenterAddresses-error',
+                error,
+              })
+              return {
+                data: {
+                  getCostCenterById: null,
+                },
+              }
+            })
+
+            if ( getCostCenterById?.addresses) {
+              settings.addresses = getCostCenterById.addresses
+            }
+
         }
 
         ctx.set('cache-control', `public, max-age=${production ? CACHE : 'no-cache'}`)
