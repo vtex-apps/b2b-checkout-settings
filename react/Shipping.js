@@ -85,7 +85,7 @@ const B2BShipping = ({ intl }) => {
             />
           </div>
 
-          <p
+          {/* <p
             className={`${styles.submitPaymentButton} btn-submit-wrapper btn-go-to-payment-wrapper`}
           >
             <button
@@ -95,7 +95,7 @@ const B2BShipping = ({ intl }) => {
             >
               {intl.formatMessage(messages.payment)}
             </button>
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
