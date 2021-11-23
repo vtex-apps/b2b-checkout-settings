@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Loads Cost Center addresses at the checkout page
+
 ## [0.1.0] - 2021-11-12
 
 ### Added
