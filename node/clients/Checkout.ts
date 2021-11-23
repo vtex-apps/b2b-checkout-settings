@@ -1,4 +1,8 @@
-import type { InstanceOptions, IOContext, RequestTracingConfig } from '@vtex/api'
+import type {
+  InstanceOptions,
+  IOContext,
+  RequestTracingConfig,
+} from '@vtex/api'
 import { JanusClient } from '@vtex/api'
 
 import { createTracing } from '../utils'
@@ -43,6 +47,4 @@ export class Checkout extends JanusClient {
       tracing: createTracing(metric, tracingConfig),
     })
   }
-
-
 }

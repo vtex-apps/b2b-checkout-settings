@@ -4,29 +4,17 @@
     {
       "label": "Can add shipping address",
       "value": "add-shipping",
-      "roles": [
-        "store-admin",
-        "sales-admin",
-        "sales-manager"
-      ]
+      "roles": ["store-admin", "sales-admin", "sales-manager"]
     },
     {
       "label": "Can edit shipping address",
       "value": "edit-shipping",
-      "roles": [
-        "store-admin",
-        "sales-admin",
-        "sales-manager"
-      ]
+      "roles": ["store-admin", "sales-admin", "sales-manager"]
     },
     {
       "label": "Can change profile",
       "value": "change-profile",
-      "roles": [
-        "store-admin",
-        "sales-admin",
-        "sales-manager"
-      ]
+      "roles": ["store-admin", "sales-admin", "sales-manager"]
     }
   ]
 }

@@ -3,7 +3,8 @@
 import * as crypto from 'crypto'
 
 import type { AxiosError } from 'axios'
-import { AuthenticationError, ForbiddenError, UserInputError, RequestTracingConfig } from '@vtex/api'
+import type { RequestTracingConfig } from '@vtex/api'
+import { AuthenticationError, ForbiddenError, UserInputError } from '@vtex/api'
 
 export const toHash = (obj: any) => {
   return crypto.createHash('md5').update(JSON.stringify(obj)).digest('hex')
@@ -31,7 +32,6 @@ export function statusToError(e: any) {
 
   throw e
 }
-
 
 export const createTracing = (
   metric: string,
