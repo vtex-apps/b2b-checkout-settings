@@ -1,10 +1,11 @@
+/* eslint-disable vtex/prefer-early-return */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react'
+import React, { useState } from 'react'
 import { injectIntl, defineMessages } from 'react-intl'
 
-import styles from './checkout.css'
+import styles from './b2bcheckout.css'
 
 const messages = defineMessages({
   title: {
@@ -15,11 +16,54 @@ const messages = defineMessages({
     id: 'store/go-to-payment',
     defaultMessage: 'Go to payent',
   },
+  error: {
+    id: 'store/error-loading-addresses',
+    defaultMessage: "Couldn't load addresses",
+  },
+  notfound: {
+    id: 'store/no-addresses',
+    defaultMessage: 'No addresses available',
+  },
 })
 
+window.b2bCheckoutSettings = window.b2bCheckoutSettings || {}
 const B2BShipping = ({ intl }) => {
+  const [state, setState] = useState({
+    orderForm: null,
+    addressId: null,
+  })
+
+  let checkOf = null
+
   if (typeof document === 'undefined' || typeof document === 'undefined') {
     return null
+  }
+
+  const { orderForm, addressId } = state
+
+  checkOf = setInterval(() => {
+    if (
+      !window.b2bCheckoutSettings.ofLoaded &&
+      window.vtexjs &&
+      window.vtexjs.checkout &&
+      window.vtexjs.checkout.orderForm
+    ) {
+      clearInterval(checkOf)
+      window.b2bCheckoutSettings.ofLoaded = true
+      setState({
+        ...state,
+        orderForm: window.vtexjs.checkout.orderForm,
+      })
+    }
+  }, 500)
+
+  if (!orderForm) return null
+
+  if (!addressId && orderForm.shippingData.address) {
+    setState({
+      ...state,
+      addressId: orderForm.shippingData.address.addressId,
+    })
   }
 
   const settings = JSON.parse(
@@ -27,39 +71,74 @@ const B2BShipping = ({ intl }) => {
   )
 
   if (!settings || settings.error) {
-    return <div> {settings ? settings.error : `Couldn't load addresses`} </div>
+    return (
+      <div>
+        {' '}
+        {settings ? settings.error : intl.formatMessage(messages.error)}{' '}
+      </div>
+    )
+  }
+
+  window.b2bCheckoutSettings.setCurrent = currAddressId => {
+    const address = settings.addresses.find(
+      item => item.addressId === currAddressId
+    )
+
+    setState({
+      ...state,
+      addressId: currAddressId,
+    })
+
+    const shippingData = { address }
+
+    window.vtexjs.checkout.sendAttachment('shippingData', shippingData)
   }
 
   const buildAddress = () => {
     let html = ''
 
-    console.log('buildAddress')
     if (!settings.addresses || !settings.addresses.length) {
-      return 'No addresses available'
+      return intl.formatMessage(messages.notfound)
     }
 
     settings.addresses.forEach(address => {
       html += `
-          <label className="address-item ${styles.addressItemOption}">
-            <div className="shp-option-text ${styles.addressItemText}">
-              <div className="address-summary address-summary-USA">
+          <label
+            onClick="b2bCheckoutSettings.setCurrent('${address.addressId}')"
+            class="address-item ${styles.addressItemOption} ${
+        address.addressId === addressId ? styles.addressItemOptionActive : ''
+      }">
+            <div class="${styles.addressItemIcon} shp-option-icon">
+              <svg class="${
+                styles.svg
+              }" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                ${
+                  address.addressId === addressId
+                    ? '<path d="M8 4C5.792 4 4 5.792 4 8s1.792 4 4 4 4-1.792 4-4-1.792-4-4-4zm0-4C3.584 0 0 3.584 0 8s3.584 8 8 8 8-3.584 8-8-3.584-8-8-8zm0 14.4A6.398 6.398 0 0 1 1.6 8c0-3.536 2.864-6.4 6.4-6.4 3.536 0 6.4 2.864 6.4 6.4 0 3.536-2.864 6.4-6.4 6.4z" fill="#3386E8"></path>'
+                    : '<path d="M8 0C3.584 0 0 3.584 0 8s3.584 8 8 8 8-3.584 8-8-3.584-8-8-8zm0 14.4A6.398 6.398 0 0 1 1.6 8c0-3.536 2.864-6.4 6.4-6.4 3.536 0 6.4 2.864 6.4 6.4 0 3.536-2.864 6.4-6.4 6.4z" fill="#3386E8"></path>'
+                }
+              </svg>
+
+            </div>
+            <div class="shp-option-text ${styles.addressItemText}">
+              <div class="address-summary address-summary-USA">
                 <span>
-                  <span className="street">${address.street}</span>
+                  <span class="street">${address.street}</span>
                 </span>
-                <br className="line1-delimiter" />
+                <br class="line1-delimiter" />
                 <span>
-                  <span className="city">${address.city}</span>
-                </span>
-                <span>
-                  <span className="state-delimiter">, </span>
-                  <span className="state">${address.state}</span>
+                  <span class="city">${address.city}</span>
                 </span>
                 <span>
-                  <span className="postalCode-delimiter"> </span>
-                  <span className="postalCode">${address.postalCode}</span>
+                  <span class="state-delimiter">, </span>
+                  <span class="state">${address.state}</span>
                 </span>
-                <br className="line2-delimiter" />
-                <span className="country">${address.country}</span>
+                <span>
+                  <span class="postalCode-delimiter"> </span>
+                  <span class="postalCode">${address.postalCode}</span>
+                </span>
+                <br class="line2-delimiter" />
+                <span class="country">${address.country}</span>
               </div>
             </div>
           </label>
@@ -84,18 +163,6 @@ const B2BShipping = ({ intl }) => {
               dangerouslySetInnerHTML={{ __html: buildAddress() }}
             />
           </div>
-
-          {/* <p
-            className={`${styles.submitPaymentButton} btn-submit-wrapper btn-go-to-payment-wrapper`}
-          >
-            <button
-              className="submit  btn-go-to-payment btn btn-large btn-success"
-              id="btn-go-to-payment"
-              type="button"
-            >
-              {intl.formatMessage(messages.payment)}
-            </button>
-          </p> */}
         </div>
       </div>
     </div>
