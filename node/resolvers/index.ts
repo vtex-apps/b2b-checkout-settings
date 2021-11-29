@@ -136,7 +136,9 @@ export const resolvers = {
 
             return {
               data: {
-                checkUserPermission: null,
+                checkUserPermission: {
+                  permissions: [],
+                },
               },
             }
           })
