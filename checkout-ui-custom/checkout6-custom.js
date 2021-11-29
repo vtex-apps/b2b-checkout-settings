@@ -15,7 +15,7 @@
 
   // Used to remove cache from requests
   const isWorkspace = function () {
-    return window.location.href.indexOf('--') !== -1
+    return window.__RUNTIME__.workspace !== 'master'
   }
 
   let settings =
@@ -70,17 +70,27 @@
   }
 
   const applyPermissions = function (permissions) {
-    console.log('applyPermissions =>', permissions.join(' '))
+    // Add permission keys to the body class for layout changes
     $('body').addClass(permissions.join(' '))
+
+    const [, step] = window.location.hash.split('/')
+
+    if (
+      permissions.indexOf(function (permission) {
+        return permission === 'can-checkout'
+      }) === -1 &&
+      step.indexOf('cart') === -1
+    ) {
+      window.location.replace('/checkout/#/cart')
+    }
   }
 
   const handleSettings = function () {
-    console.log('handleSettings =>', settings)
     if (settings.showPONumber === true) {
       buildPOField()
     }
 
-    if (settings.permissions && settings.permissions.length) {
+    if (settings.permissions) {
       applyPermissions(settings.permissions)
     }
   }
@@ -122,4 +132,9 @@
       }
     }
   }, 500)
+  window.addEventListener('hashchange', function () {
+    if (settings.permissions) {
+      applyPermissions(settings.permissions)
+    }
+  })
 })()
