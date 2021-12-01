@@ -7,9 +7,21 @@
   const translation = {
     'pt-BR': {
       cartPurchaseOrderLabel: 'Número do Pedito',
+      messages: {
+        'b2b-access-denied': {
+          title: 'Acesso',
+          detail: 'Você não tem acesso ao checkout',
+        },
+      },
     },
     en: {
       cartPurchaseOrderLabel: 'Reference or PO Number',
+      messages: {
+        'b2b-access-denied': {
+          title: 'ACCESS',
+          detail: "You don't have access to the checkout",
+        },
+      },
     },
   }
 
@@ -69,20 +81,78 @@
     })
   }
 
+  const showPaymentOptions = function (permissions) {
+    const allOptions = document.querySelectorAll(
+      '.orderform-template-holder #payment-data .payment-group-item'
+    )
+
+    const [activeOption] = document.querySelectorAll(
+      '.orderform-template-holder #payment-data .payment-group-item.active'
+    )
+
+    const activeOptionText = activeOption ? activeOption.innerText.trim() : ''
+    let firstOption = null
+
+    const idsToShow = []
+
+    if (
+      permissions &&
+      permissions.paymentTerms &&
+      permissions.paymentTerms.length
+    ) {
+      allOptions.forEach(function (obj) {
+        const currOption = obj.innerText.trim()
+
+        if (
+          permissions.paymentTerms.findIndex(function (pmt) {
+            return pmt.name === currOption
+          }) !== -1
+        ) {
+          if (firstOption === null) {
+            firstOption = obj
+          }
+
+          idsToShow.push(obj.id)
+        }
+      })
+    }
+
+    if (!$('style#b2bPayments').size() && idsToShow.length) {
+      $(
+        `<style id="b2bPayments">${idsToShow
+          .map(function (id) {
+            return `#payment-data .payment-group-item#${id}{display:flex;}`
+          })
+          .join('')}</style>`
+      ).appendTo('body')
+    }
+
+    if (
+      permissions.paymentTerms.findIndex(function (pmt) {
+        return pmt.name === activeOptionText
+      }) === -1
+    ) {
+      $(firstOption).click()
+    }
+  }
+
   const applyPermissions = function (permissions) {
     // Add permission keys to the body class for layout changes
     $('body').addClass(permissions.join(' '))
 
     const [, step] = window.location.hash.split('/')
 
+    // Check if use can navigate the checkout
     if (
-      permissions.indexOf(function (permission) {
-        return permission === 'can-checkout'
-      }) === -1 &&
+      permissions.indexOf('can-checkout') === -1 &&
       step.indexOf('cart') === -1
     ) {
+      window.sessionStorage.setItem('message', 'b2b-access-denied')
       window.location.replace('/checkout/#/cart')
     }
+
+    // Show payment options available
+    showPaymentOptions(settings)
   }
 
   const handleSettings = function () {
@@ -107,18 +177,14 @@
       url: `${rootPath}/b2b-checkout-settings/${
         isWorkspace() ? `?v=${ts}` : ''
       }`,
+    }).then(function (response) {
+      window.sessionStorage.setItem(
+        'b2b-checkout-settings',
+        JSON.stringify(response)
+      )
+      settings = response
+      handleSettings()
     })
-      .then(function (response) {
-        window.sessionStorage.setItem(
-          'b2b-checkout-settings',
-          JSON.stringify(response)
-        )
-        settings = response
-        handleSettings()
-      })
-      .catch(function (error) {
-        console.log('Error Response settings =>', error)
-      })
   }
 
   // Wait until it have the vtex runtime to call the functions
@@ -132,9 +198,28 @@
       }
     }
   }, 500)
+
   window.addEventListener('hashchange', function () {
+    const message = window.sessionStorage.getItem('message')
+
     if (settings.permissions) {
       applyPermissions(settings.permissions)
+    }
+
+    if (message) {
+      $(window).trigger('addMessage.vtex', {
+        type: 'info',
+        id: message,
+        content: {
+          title:
+            translation[window.vtex.i18n.getLocale()].messages[message].title ||
+            'Access',
+          detail:
+            translation[window.vtex.i18n.getLocale()].messages[message]
+              .detail || "You don't have access to checkout",
+        },
+      })
+      window.sessionStorage.removeItem('message')
     }
   })
 })()

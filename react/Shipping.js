@@ -1,5 +1,4 @@
 /* eslint-disable vtex/prefer-early-return */
-/* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react'
