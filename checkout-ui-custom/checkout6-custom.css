@@ -20,7 +20,8 @@
 
 .client-profile-data a.link-box-edit,
 button.vtex-omnishipping-1-x-buttonEditAddress,
-button.vtex-omnishipping-1-x-buttonCreateAddress {
+button.vtex-omnishipping-1-x-buttonCreateAddress,
+.orderform-template-holder #payment-data .payment-group-item {
   display: none;
 }
 body.change-profile .client-profile-data a.link-box-edit,

@@ -18,6 +18,15 @@ const QUERIES = {
       permissions
     }
   }`,
+  getPaymentTerms: `query paymentTermsByOrganization($id: ID!) {
+    getOrganizationById(id: $id) {
+      paymentTerms {
+        id
+        name
+      }
+    }
+  }
+  `,
   getAddresses: `query addressByCostCenter($id: ID!) {
     getCostCenterById(id: $id) {
       addresses {
@@ -202,6 +211,53 @@ export const resolvers = {
 
           if (getCostCenterById?.addresses) {
             settings.addresses = getCostCenterById.addresses
+          }
+        }
+
+        if (
+          userSession?.namespaces?.['storefront-permissions']?.organization
+            ?.value
+        ) {
+          const {
+            data: { getOrganizationById },
+          }: any = await graphQLServer
+            .query(
+              QUERIES.getPaymentTerms,
+              {
+                id: userSession.namespaces['storefront-permissions']
+                  .organization.value,
+              },
+              {
+                persistedQuery: {
+                  provider: 'vtex.b2b-organizations-graphql@0.x',
+                  sender: 'vtex.b2b-checkout-settings@0.x',
+                },
+              }
+            )
+            .then((res: any) => {
+              return {
+                data: {
+                  getOrganizationById: {
+                    paymentTerms: res?.data?.getOrganizationById?.paymentTerms,
+                  },
+                },
+              }
+            })
+            .catch((error: any) => {
+              logger.error({
+                message: 'getOrganizationById-error',
+                error,
+              })
+
+              return {
+                data: {
+                  getOrganizationById: null,
+                },
+              }
+            })
+
+          if (getOrganizationById?.paymentTerms) {
+            settings.paymentTerms = getOrganizationById.paymentTerms
           }
         }
 
