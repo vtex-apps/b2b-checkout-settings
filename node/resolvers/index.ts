@@ -18,8 +18,9 @@ const QUERIES = {
       permissions
     }
   }`,
-  getPaymentTerms: `query paymentTermsByOrganization($id: ID!) {
+  getOrganizationDetails: `query OrganizationDetails($id: ID!) {
     getOrganizationById(id: $id) {
+      status
       paymentTerms {
         id
         name
@@ -222,7 +223,7 @@ export const resolvers = {
             data: { getOrganizationById },
           }: any = await graphQLServer
             .query(
-              QUERIES.getPaymentTerms,
+              QUERIES.getOrganizationDetails,
               {
                 id: userSession.namespaces['storefront-permissions']
                   .organization.value,
@@ -239,6 +240,7 @@ export const resolvers = {
                 data: {
                   getOrganizationById: {
                     paymentTerms: res?.data?.getOrganizationById?.paymentTerms,
+                    status: res?.data?.getOrganizationById?.status,
                   },
                 },
               }
@@ -258,6 +260,15 @@ export const resolvers = {
 
           if (getOrganizationById?.paymentTerms) {
             settings.paymentTerms = getOrganizationById.paymentTerms
+          }
+
+          // if organization status is "on-hold" or "inactive", remove "can-checkout" permission
+          if (getOrganizationById?.status !== 'active') {
+            const newPermissions = settings.permissions?.filter(
+              (permission: string) => permission !== 'can-checkout'
+            )
+
+            settings.permissions = newPermissions ?? []
           }
         }
 
