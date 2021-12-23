@@ -1,6 +1,11 @@
 {
   "store/shipping-title": "Shipping",
+  "store/shipping-method-title": "Shipping method",
   "store/go-to-payment": "Go to payment",
   "store/error-loading-addresses": "Couldn't load addresses",
-  "store/no-addresses": "No addresses available"
+  "store/no-addresses": "No addresses available",
+  "store/options.shippingEstimate-bd": "{timeAmount, plural, =0 {Today} one {In # business day} other {Up to # business days}}",
+  "store/options.shippingEstimate-d": "{timeAmount, plural, =0 {Today} one {In # day} other {Up to # days}}",
+  "store/options.shippingEstimate-h": "{timeAmount, plural, =0 {Right now} one {In # hour} other {Up to # hours}}",
+  "store/options.shippingEstimate-m": "{timeAmount, plural, =0 {Right now} one {In # minute} other {Up to # minutes}}"
 }

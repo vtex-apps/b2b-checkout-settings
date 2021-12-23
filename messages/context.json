@@ -1,6 +1,11 @@
 {
   "store/shipping-title": "store/shipping-title",
+  "store/shipping-method-title": "store/shipping-method-title",
   "store/go-to-payment": "store/go-to-payment",
   "store/error-loading-addresses": "store/error-loading-addresses",
-  "store/no-addresses": "store/no-addresses"
+  "store/no-addresses": "store/no-addresses",
+  "store/options.shippingEstimate-bd": "store/options.shippingEstimate-bd",
+  "store/options.shippingEstimate-d": "store/options.shippingEstimate-d",
+  "store/options.shippingEstimate-h": "store/options.shippingEstimate-h",
+  "store/options.shippingEstimate-m": "store/options.shippingEstimate-m"
 }

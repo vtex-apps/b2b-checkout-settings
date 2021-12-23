@@ -16,7 +16,8 @@
   "dependencies": {
     "vtex.graphql-server": "1.x",
     "vtex.b2b-organizations-graphql": "0.x",
-    "vtex.checkout": "0.x"
+    "vtex.checkout": "0.x",
+    "vtex.shipping-manager": "0.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
@@ -41,10 +42,7 @@
     }
   },
   "settingsUiSchema": {
-    "ui:order": [
-      "showPONumber",
-      "hasPONumber"
-    ],
+    "ui:order": ["showPONumber", "hasPONumber"],
     "hasPONumber": {
       "ui:widget": "hidden"
     }
