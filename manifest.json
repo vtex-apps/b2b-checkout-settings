@@ -8,16 +8,11 @@
     "docs": "0.x",
     "checkout-ui-custom": "0.x",
     "node": "6.x",
-    "react": "2.x",
-    "pages": "0.x",
-    "messages": "0.x",
     "vtex.storefront-permissions": "1.x"
   },
   "dependencies": {
     "vtex.graphql-server": "1.x",
-    "vtex.b2b-organizations-graphql": "0.x",
-    "vtex.checkout": "0.x",
-    "vtex.shipping-manager": "0.x"
+    "vtex.b2b-organizations-graphql": "0.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"

@@ -34,6 +34,8 @@
     JSON.parse(window.sessionStorage.getItem('b2b-checkout-settings')) ||
     undefined
 
+  window.b2bCheckoutSettings = window.b2bCheckoutSettings || settings
+
   const buildPOField = function () {
     if ($('.b2b-purchase-order-number-label').length > 0) return false
 
@@ -163,6 +165,8 @@
     if (settings.permissions) {
       applyPermissions(settings.permissions)
     }
+
+    window.b2bCheckoutSettings = settings
   }
 
   const fetchSettings = function () {

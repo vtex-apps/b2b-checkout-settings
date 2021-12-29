@@ -30,6 +30,10 @@ const QUERIES = {
   `,
   getAddresses: `query addressByCostCenter($id: ID!) {
     getCostCenterById(id: $id) {
+      paymentTerms {
+        id
+        name
+      }
       addresses {
         addressId
         addressType
@@ -193,6 +197,7 @@ export const resolvers = {
                 data: {
                   getCostCenterById: {
                     addresses: res?.data?.getCostCenterById?.addresses,
+                    paymentTerms: res?.data?.getCostCenterById?.paymentTerms,
                   },
                 },
               }
@@ -212,6 +217,10 @@ export const resolvers = {
 
           if (getCostCenterById?.addresses) {
             settings.addresses = getCostCenterById.addresses
+          }
+
+          if (getCostCenterById?.paymentTerms) {
+            settings.paymentTerms = getCostCenterById.paymentTerms
           }
         }
 
@@ -258,7 +267,7 @@ export const resolvers = {
               }
             })
 
-          if (getOrganizationById?.paymentTerms) {
+          if (!settings.paymentTerms && getOrganizationById?.paymentTerms) {
             settings.paymentTerms = getOrganizationById.paymentTerms
           }
 
