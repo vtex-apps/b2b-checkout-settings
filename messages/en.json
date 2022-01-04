@@ -1,6 +1,0 @@
-{
-  "store/shipping-title": "Shipping",
-  "store/go-to-payment": "Go to payment",
-  "store/error-loading-addresses": "Couldn't load addresses",
-  "store/no-addresses": "No addresses available"
-}

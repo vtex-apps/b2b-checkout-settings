@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Removed
+- Custom Shipping section
+
+### Added
+- `window.b2bCheckoutSettings` to provide context to the checkout customizations
 ## [0.5.0] - 2021-12-21
 
 ### Added

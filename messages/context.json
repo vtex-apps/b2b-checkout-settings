@@ -1,6 +1,0 @@
-{
-  "store/shipping-title": "store/shipping-title",
-  "store/go-to-payment": "store/go-to-payment",
-  "store/error-loading-addresses": "store/error-loading-addresses",
-  "store/no-addresses": "store/no-addresses"
-}
