@@ -36,7 +36,6 @@ jobs:
         run: yarn install --frozen-lockfile
         working-directory: ./node
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
