@@ -21,11 +21,14 @@
 .client-profile-data a.link-box-edit,
 button.vtex-omnishipping-1-x-buttonEditAddress,
 button.vtex-omnishipping-1-x-buttonCreateAddress,
-.orderform-template-holder #payment-data .payment-group-item {
+.orderform-template-holder #payment-data .v-custom-payment-item-wrap {
   display: none;
 }
 body.change-profile .client-profile-data a.link-box-edit,
 body.edit-shipping button.vtex-omnishipping-1-x-buttonEditAddress,
-body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress {
+body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
+.orderform-template-holder
+  #payment-data
+  .v-custom-payment-item-wrap.b2b-allowed-payment {
   display: block;
 }
