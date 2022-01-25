@@ -95,8 +95,6 @@
     const activeOptionText = activeOption ? activeOption.innerText.trim() : ''
     let firstOption = null
 
-    // const idsToShow = []
-
     if (
       permissions &&
       permissions.paymentTerms &&
