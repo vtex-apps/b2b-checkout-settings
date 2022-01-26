@@ -7,15 +7,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Improve display of allowed payment methods
+
 ## [0.6.1] - 2022-01-06
+
+### Added
+
+- SonarCloud PR integration
 
 ## [0.6.0] - 2022-01-04
 
 ### Removed
+
 - Custom Shipping section
 
 ### Added
+
 - `window.b2bCheckoutSettings` to provide context to the checkout customizations
+
 ## [0.5.0] - 2021-12-21
 
 ### Added
@@ -25,21 +36,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.4.0] - 2021-12-01
 
 ### Added
+
 - Filter payment methods to show only allowed ones by the Organization
+
 ## [0.3.0] - 2021-11-29
 
 ### Added
+
 - Don't allow buyer to checkout
 
 ## [0.2.0] - 2021-11-23
 
 ### Added
+
 - Loads Cost Center addresses at the checkout page
 
 ## [0.1.0] - 2021-11-12
 
 ### Added
+
 - PO Number option
+
 ## [0.0.1] - 2021-11-10
 
 ### Added

@@ -95,8 +95,6 @@
     const activeOptionText = activeOption ? activeOption.innerText.trim() : ''
     let firstOption = null
 
-    const idsToShow = []
-
     if (
       permissions &&
       permissions.paymentTerms &&
@@ -114,19 +112,9 @@
             firstOption = obj
           }
 
-          idsToShow.push(obj.id)
+          obj.parentElement.classList.add('b2b-allowed-payment')
         }
       })
-    }
-
-    if (!$('style#b2bPayments').size() && idsToShow.length) {
-      $(
-        `<style id="b2bPayments">${idsToShow
-          .map(function (id) {
-            return `#payment-data .payment-group-item#${id}{display:flex;}`
-          })
-          .join('')}</style>`
-      ).appendTo('body')
     }
 
     if (
