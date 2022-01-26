@@ -32,3 +32,8 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
   .v-custom-payment-item-wrap.b2b-allowed-payment {
   display: block;
 }
+
+.item-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
