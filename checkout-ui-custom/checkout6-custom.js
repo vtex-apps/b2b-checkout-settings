@@ -7,7 +7,7 @@
   const translation = {
     'pt-BR': {
       cartPurchaseOrderLabel: 'Número do Pedido',
-      createQuoteButtonLabel: 'Criar Cota',
+      createQuoteButtonLabel: 'Criar uma Cota',
       messages: {
         'b2b-access-denied': {
           title: 'Acesso',
@@ -17,7 +17,7 @@
     },
     en: {
       cartPurchaseOrderLabel: 'Reference or PO Number',
-      createQuoteButtonLabel: 'Create Quote',
+      createQuoteButtonLabel: 'Create a Quote',
       messages: {
         'b2b-access-denied': {
           title: 'ACCESS',
