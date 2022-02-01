@@ -32,3 +32,11 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
   .v-custom-payment-item-wrap.b2b-allowed-payment {
   display: block;
 }
+
+.btn-b2b-secondary {
+    background-image: initial;
+    background-color: transparent;
+    border-color: rgb(0, 93, 216);
+    color: rgb(47, 194, 255);
+    margin: 10px 0;
+}

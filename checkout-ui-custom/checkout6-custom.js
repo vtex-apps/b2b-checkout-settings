@@ -6,7 +6,8 @@
   let checkVtex = null
   const translation = {
     'pt-BR': {
-      cartPurchaseOrderLabel: 'Número do Pedito',
+      cartPurchaseOrderLabel: 'Número do Pedido',
+      createQuoteButtonLabel: 'Criar Cota',
       messages: {
         'b2b-access-denied': {
           title: 'Acesso',
@@ -16,6 +17,7 @@
     },
     en: {
       cartPurchaseOrderLabel: 'Reference or PO Number',
+      createQuoteButtonLabel: 'Create Quote',
       messages: {
         'b2b-access-denied': {
           title: 'ACCESS',
@@ -35,6 +37,24 @@
     undefined
 
   window.b2bCheckoutSettings = window.b2bCheckoutSettings || settings
+
+  const buildCreateQuoteButton = function () {
+    const label =
+      translation[window.vtex.i18n.getLocale()].createQuoteButtonLabel ||
+      'Create Quote'
+
+    const btn = $(
+      `<button class='btn btn-large btn-b2b-secondary'>${label}</button>`
+    )
+
+    $(btn).click(function () {
+      window.location.replace('/b2b-quotes/create')
+    })
+
+    const target = '.cart-links.cart-links-bottom'
+
+    $(target).append(btn)
+  }
 
   const buildPOField = function () {
     if ($('.b2b-purchase-order-number-label').length > 0) return false
@@ -153,6 +173,8 @@
     if (settings.permissions) {
       applyPermissions(settings.permissions)
     }
+
+    buildCreateQuoteButton()
 
     window.b2bCheckoutSettings = settings
   }
