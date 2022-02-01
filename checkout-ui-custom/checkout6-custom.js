@@ -43,17 +43,20 @@
       translation[window.vtex.i18n.getLocale()].createQuoteButtonLabel ||
       'Create Quote'
 
-    const btn = $(
-      `<button class='btn btn-large btn-b2b-secondary'>${label}</button>`
-    )
+    const targets = [
+      '.cart-links.cart-links-bottom',
+      '.payment-confirmation-wrap',
+    ]
 
-    $(btn).click(function () {
-      window.location.replace('/b2b-quotes/create')
+    targets.forEach(function (target) {
+      const btn = $(
+        `<button class='btn btn-large btn-b2b-secondary'>${label}</button>`
+      ).click(function () {
+        window.location.replace('/b2b-quotes/create')
+      })
+
+      $(target).append(btn)
     })
-
-    const target = '.cart-links.cart-links-bottom'
-
-    $(target).append(btn)
   }
 
   const buildPOField = function () {
@@ -175,7 +178,6 @@
     }
 
     buildCreateQuoteButton()
-
     window.b2bCheckoutSettings = settings
   }
 

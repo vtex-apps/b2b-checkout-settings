@@ -39,4 +39,5 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
     border-color: rgb(0, 93, 216);
     color: rgb(47, 194, 255);
     margin: 10px 0;
+    width: 100%;
 }
