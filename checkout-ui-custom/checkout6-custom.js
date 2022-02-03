@@ -116,8 +116,6 @@
         }
 
         obj.setAttribute('data-b2b-allowed', 'true')
-        // obj.classList.add('b2b-allowed-payment')
-        // obj.parentElement.classList.add('b2b-allowed-payment-container')
       })
     }
 
