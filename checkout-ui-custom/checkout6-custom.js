@@ -106,14 +106,18 @@
         if (
           permissions.paymentTerms.findIndex(function (pmt) {
             return pmt.name === currOption
-          }) !== -1
+          }) === -1
         ) {
-          if (firstOption === null) {
-            firstOption = obj
-          }
-
-          obj.parentElement.classList.add('b2b-allowed-payment')
+          return
         }
+
+        if (firstOption === null) {
+          firstOption = obj
+        }
+
+        obj.setAttribute('data-b2b-allowed', 'true')
+        // obj.classList.add('b2b-allowed-payment')
+        // obj.parentElement.classList.add('b2b-allowed-payment-container')
       })
     }
 
