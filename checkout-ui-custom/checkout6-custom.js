@@ -177,7 +177,10 @@
       applyPermissions(settings.permissions)
     }
 
-    buildCreateQuoteButton()
+    if (settings.showQuoteButton) {
+      buildCreateQuoteButton()
+    }
+
     window.b2bCheckoutSettings = settings
   }
 

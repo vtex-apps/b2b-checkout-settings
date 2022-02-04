@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Created a quote button which goes to /b2b-quote/create flow
+- Added a app setting to enable/disable the create a quote button at the checkout page
 
 ## [0.6.2] - 2022-01-26
 

@@ -33,14 +33,17 @@
         "type": "boolean",
         "default": false,
         "description": "Would be true if PONumber is already set to the checkout"
+      },
+      "showQuoteButton": {
+        "title": "Show Create a Quote button",
+        "type": "boolean",
+        "default": false,
+        "description": "Enable the Create a Quote button at the checkout page"
       }
     }
   },
   "settingsUiSchema": {
-    "ui:order": [
-      "showPONumber",
-      "hasPONumber"
-    ],
+    "ui:order": ["showPONumber", "hasPONumber", "showQuoteButton"],
     "hasPONumber": {
       "ui:widget": "hidden"
     }
