@@ -21,7 +21,7 @@
 .client-profile-data a.link-box-edit,
 button.vtex-omnishipping-1-x-buttonEditAddress,
 button.vtex-omnishipping-1-x-buttonCreateAddress,
-.orderform-template-holder #payment-data .v-custom-payment-item-wrap {
+.orderform-template-holder #payment-data .payment-group-item {
   display: none;
 }
 body.change-profile .client-profile-data a.link-box-edit,
@@ -29,6 +29,13 @@ body.edit-shipping button.vtex-omnishipping-1-x-buttonEditAddress,
 body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
 .orderform-template-holder
   #payment-data
-  .v-custom-payment-item-wrap.b2b-allowed-payment {
+  .payment-group-item[data-b2b-allowed='true'] {
   display: block;
+}
+
+.v-custom-payment-item-wrap {
+  border: none !important;
+}
+.v-custom-payment-item-wrap.active {
+  border: 1px solid !important;
 }
