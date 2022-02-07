@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added a new feature to check if the order form has a custom data property ("b2b-quotes-graphql") from quotes and then the items in the cart will be locked by .item-disabled css class which disables the pointer events from mouse/touch.
 
+## [0.6.3] - 2022-02-04
+
+### Fixed
+
+- Correct payment methods will be displayed regardless of whether payment terms are shown as tabs or accordions, and regardless of whether this app's checkout JS runs before or after checkout-ui-custom's
+
 ## [0.6.2] - 2022-01-26
 
 ### Fixed
