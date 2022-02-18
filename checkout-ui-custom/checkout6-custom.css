@@ -33,6 +33,10 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
   display: block;
 }
 
+.btn-b2b-primary {
+    margin: 10px 0;
+}
+
 .item-disabled {
   pointer-events: none;
   opacity: 0.5;

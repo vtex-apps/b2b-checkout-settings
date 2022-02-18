@@ -57,6 +57,7 @@ const QUERIES = {
 const DEFAULTS = {
   showPONumber: false,
   hasPONumber: false,
+  showQuoteButton: false,
 }
 
 export const resolvers = {

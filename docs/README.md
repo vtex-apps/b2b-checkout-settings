@@ -8,6 +8,7 @@ This App is part of the [B2B Store Edition](https://github.com/vtex/b2b-store-ed
 - List Cost Center Addresses
 - Enable PO Number
 - Block checkout based on user's privilegies
+- Enable the 'Create a Quote' button at the checkout page
 
 ## Configuration
 
