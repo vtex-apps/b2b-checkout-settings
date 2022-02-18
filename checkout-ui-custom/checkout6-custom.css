@@ -33,13 +33,8 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
   display: block;
 }
 
-.btn-b2b-secondary {
-    background-image: initial;
-    background-color: transparent;
-    border-color: rgb(0, 93, 216);
-    color: rgb(47, 194, 255);
+.btn-b2b-primary {
     margin: 10px 0;
-    width: 100%;
 }
 
 .v-custom-payment-item-wrap {

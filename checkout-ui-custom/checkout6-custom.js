@@ -50,7 +50,7 @@
 
     targets.forEach(function (target) {
       const btn = $(
-        `<button class='btn btn-large btn-b2b-secondary'>${label}</button>`
+        `<button class='btn btn-large btn-primary btn-b2b-primary'>${label}</button>`
       ).click(function () {
         window.location.replace('/b2b-quotes/create')
       })
