@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.0] - 2022-02-18
+
 ### Added
 
 - Created a quote button which goes to /b2b-quote/create flow
