@@ -1,7 +1,7 @@
 {
   "name": "b2b-checkout-settings",
   "vendor": "vtex",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "title": "B2B Checkout Settings",
   "description": "Adds B2B functionalities to the checkout",
   "builders": {
@@ -37,7 +37,10 @@
     }
   },
   "settingsUiSchema": {
-    "ui:order": ["showPONumber", "hasPONumber"],
+    "ui:order": [
+      "showPONumber",
+      "hasPONumber"
+    ],
     "hasPONumber": {
       "ui:widget": "hidden"
     }
