@@ -33,6 +33,11 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
   display: block;
 }
 
+.item-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .v-custom-payment-item-wrap {
   border: none !important;
 }

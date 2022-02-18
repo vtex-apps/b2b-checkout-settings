@@ -37,10 +37,7 @@
     }
   },
   "settingsUiSchema": {
-    "ui:order": [
-      "showPONumber",
-      "hasPONumber"
-    ],
+    "ui:order": ["showPONumber", "hasPONumber"],
     "hasPONumber": {
       "ui:widget": "hidden"
     }
