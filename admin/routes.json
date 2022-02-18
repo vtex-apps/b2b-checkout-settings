@@ -1,0 +1,6 @@
+{
+  "admin.app.b2b-checkout-settings": {
+    "component": "B2BCheckoutAdmin",
+    "path": "/admin/app/b2b-checkout-settings"
+  }
+}

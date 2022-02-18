@@ -1,0 +1,19 @@
+type Query {
+  appSettings: Settings @cacheControl(scope: PUBLIC, maxAge: SHORT)
+}
+
+type Mutation {
+  saveAppSettings(settings: SettingsInput!): Settings
+}
+
+type Settings {
+  showPONumber: Boolean
+  hasPONumber: Boolean
+  showQuoteButton: Boolean
+}
+
+input SettingsInput {
+  showPONumber: Boolean!
+  hasPONumber: Boolean!
+  showQuoteButton: Boolean!
+}

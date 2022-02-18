@@ -2,9 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { ForbiddenError } from '@vtex/api'
 
-const getAppId = (): string => {
-  return process.env.VTEX_APP_ID ?? ''
-}
+import { GraphQLError } from 'graphql'
 
 const CACHE = 180
 const QUERIES = {
@@ -54,6 +52,15 @@ const QUERIES = {
   `,
 }
 
+const VBASE_BUCKET = 'b2b-checkout-settings'
+const VBASE_SETTINGS_FILE = 'settings'
+
+interface Settings {
+  showPONumber: boolean
+  hasPONumber: boolean
+  showQuoteButton: boolean
+}
+
 const DEFAULTS = {
   showPONumber: false,
   hasPONumber: false,
@@ -64,7 +71,7 @@ export const resolvers = {
   Routes: {
     settings: async (ctx: Context) => {
       const {
-        clients: { apps, graphQLServer, checkout, session },
+        clients: { graphQLServer, checkout, session, vbase },
         vtex: { logger, storeUserAuthToken, production },
       } = ctx
 
@@ -81,8 +88,11 @@ export const resolvers = {
 
         ctx.set('cache-control', 'no-cache')
       } else {
-        const app: string = getAppId()
-        const accountSettings = await apps.getAppSettings(app)
+        const accountSettings: Settings | null = await vbase.getJSON(
+          VBASE_BUCKET,
+          VBASE_SETTINGS_FILE,
+          true
+        )
 
         if (accountSettings?.showPONumber && !accountSettings?.hasPONumber) {
           const checkoutConfig: any = await checkout
@@ -120,12 +130,14 @@ export const resolvers = {
 
             if (setCheckoutConfig) {
               accountSettings.hasPONumber = true
-              await apps.saveAppSettings(app, accountSettings).catch(error => {
-                logger.error({
-                  message: 'saveAppSettings-error',
-                  error,
+              await vbase
+                .saveJSON(VBASE_BUCKET, VBASE_SETTINGS_FILE, accountSettings)
+                .catch(error => {
+                  logger.error({
+                    message: 'saveAppSettings-error',
+                    error,
+                  })
                 })
-              })
             }
           }
         }
@@ -290,6 +302,58 @@ export const resolvers = {
         ctx.response.body = settings
 
         ctx.response.status = 200
+      }
+    },
+  },
+  Query: {
+    appSettings: async (_: void, __: void, ctx: Context) => {
+      const {
+        clients: { vbase },
+        vtex: { logger },
+      } = ctx
+
+      let settings = null
+
+      try {
+        settings = await vbase.getJSON(VBASE_BUCKET, VBASE_SETTINGS_FILE, true)
+      } catch (error) {
+        logger.error({
+          message: 'appSettings-getVbaseError',
+          error,
+        })
+      }
+
+      if (!settings) {
+        settings = DEFAULTS
+      }
+
+      return settings
+    },
+  },
+  Mutation: {
+    saveAppSettings: async (
+      _: void,
+      { settings }: { settings: Settings },
+      ctx: Context
+    ) => {
+      const {
+        clients: { vbase },
+        vtex: { logger },
+      } = ctx
+
+      if (!settings) throw new GraphQLError('Input not provided')
+
+      try {
+        await vbase.saveJSON(VBASE_BUCKET, VBASE_SETTINGS_FILE, settings)
+
+        return settings
+      } catch (error) {
+        logger.error({
+          message: 'appSettings-saveVbaseError',
+          error,
+        })
+
+        throw new GraphQLError('Failed to save settings')
       }
     },
   },

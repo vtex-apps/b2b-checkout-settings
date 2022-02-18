@@ -1828,17 +1828,17 @@ vary@^1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-"vtex.checkout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout@0.6.0/public/_types/react":
-  version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout@0.6.0/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
+"vtex.b2b-organizations-graphql@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations-graphql@0.9.2/public/@types/vtex.b2b-organizations-graphql":
+  version "0.9.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations-graphql@0.9.2/public/@types/vtex.b2b-organizations-graphql#ba6ea7d540cfbde0e80f4e1f270319c93a5979e1"
 
-"vtex.graphql-server@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.graphql-server@1.66.12/public/_types/react":
+"vtex.graphql-server@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.graphql-server@1.67.0/public/_types/react":
   version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.graphql-server@1.66.12/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.graphql-server@1.67.0/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
 
-"vtex.order-manager@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.11.1/public/@types/vtex.order-manager":
-  version "0.11.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.11.1/public/@types/vtex.order-manager#cc658148c5e054900c0d692a26d1ac7c872d9262"
+"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.0/public/@types/vtex.styleguide":
+  version "9.146.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.0/public/@types/vtex.styleguide#d8f912c8301ea527aee64e597de46cfc97974a26"
 
 wrappy@1:
   version "1.0.2"

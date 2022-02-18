@@ -34,7 +34,8 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
 }
 
 .btn-b2b-primary {
-    margin: 10px 0;
+  margin: 10px 0;
+  width: 100%;
 }
 
 .item-disabled {
