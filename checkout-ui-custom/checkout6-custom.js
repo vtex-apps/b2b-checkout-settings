@@ -186,6 +186,52 @@
     window.b2bCheckoutSettings = settings
   }
 
+  let checkQuotesCounter = 0
+  let checkQuotesInterval = null
+
+  const watchQuotes = function () {
+    if (checkQuotesInterval) {
+      clearInterval(checkQuotesInterval)
+    }
+
+    checkQuotesInterval = setInterval(function () {
+      checkQuotes()
+      if (checkQuotesCounter >= 10000) {
+        clearInterval(checkQuotesInterval)
+      }
+    }, 400)
+  }
+
+  const checkQuotes = function () {
+    if (window.vtexjs && window.vtexjs.checkout.orderForm.customData) {
+      const { customData } = window.vtexjs.checkout.orderForm
+
+      if (customData.customApps) {
+        const index = customData.customApps.findIndex(function (item) {
+          return item.id === 'b2b-quotes-graphql'
+        })
+
+        if (index !== -1 && customData.customApps[index].fields.quoteId) {
+          const selectorsToLock = [
+            'td.quantity',
+            'a.manualprice-link-remove',
+            'span.new-product-price',
+            'td.item-remove',
+          ]
+
+          selectorsToLock.forEach(function (selector) {
+            if (!$(selector).hasClass('item-disabled')) {
+              checkQuotesCounter = 0
+              $(selector).addClass('item-disabled')
+            } else {
+              checkQuotesCounter++
+            }
+          })
+        }
+      }
+    }
+  }
+
   const fetchSettings = function () {
     const rootPath =
       window.vtex.renderRuntime.rootPath !== undefined
@@ -219,6 +265,9 @@
       }
     }
   }, 500)
+
+  checkQuotes()
+  watchQuotes()
 
   window.addEventListener('hashchange', function () {
     const message = window.sessionStorage.getItem('message')
