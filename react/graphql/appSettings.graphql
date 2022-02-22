@@ -1,0 +1,7 @@
+query AppSettings {
+  appSettings @context(provider: "vtex.b2b-checkout-settings") {
+    showPONumber
+    hasPONumber
+    showQuoteButton
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings, see console for details",
+  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show Purchase Order Number Field",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO Number field on the checkout page",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' Button",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in checkout -- enable only if B2B Quotes (vtex.b2b-quotes) is installed!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
+}

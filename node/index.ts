@@ -41,4 +41,10 @@ declare global {
 export default new Service<Clients, RecorderState, ParamsContext>({
   clients,
   routes: resolvers.Routes,
+  graphql: {
+    resolvers: {
+      Query: resolvers.Query,
+      Mutation: resolvers.Mutation,
+    },
+  },
 })

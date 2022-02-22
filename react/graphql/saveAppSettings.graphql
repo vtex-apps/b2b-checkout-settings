@@ -1,0 +1,8 @@
+mutation SaveAppSettings($settings: SettingsInput!) {
+  saveAppSettings(settings: $settings)
+    @context(provider: "vtex.b2b-checkout-settings") {
+    showPONumber
+    hasPONumber
+    showQuoteButton
+  }
+}

@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Admin panel to manage app settings
+
+### Fixed
+
+- Store app settings in vbase so that app can function as a dependency
+- CSS for Create Quote button width
+
 ## [0.8.0] - 2022-02-18
 
 ### Added

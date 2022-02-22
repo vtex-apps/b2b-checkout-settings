@@ -1,0 +1,11 @@
+{
+  "admin/b2bCheckoutSettings.navigation.title": "admin/b2bCheckoutSettings.navigation.title",
+  "admin/b2bCheckoutSettings.saveSettings.success": "admin/b2bCheckoutSettings.saveSettings.success",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "admin/b2bCheckoutSettings.saveSettings.failure",
+  "admin/b2bCheckoutSettings.settings.title": "admin/b2bCheckoutSettings.settings.title",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "admin/b2bCheckoutSettings.settings.showPONumber.label",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "admin/b2bCheckoutSettings.settings.showPONumber.helpText",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "admin/b2bCheckoutSettings.settings.showQuoteButton.label",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "admin/b2bCheckoutSettings.saveSettings.buttonText"
+}

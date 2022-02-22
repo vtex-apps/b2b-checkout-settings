@@ -1,0 +1,18 @@
+[
+  {
+    "section": "storeSetup",
+    "titleId": "admin/b2bCheckoutSettings.navigation.title",
+    "path": "/admin/b2b-checkout-settings/"
+  },
+  {
+    "section": "storeSettings",
+    "subSection": "storeFront",
+    "adminVersion": 4,
+    "subSectionItems": [
+      {
+        "labelId": "admin/b2bCheckoutSettings.navigation.title",
+        "path": "/admin/b2b-checkout-settings/"
+      }
+    ]
+  }
+]

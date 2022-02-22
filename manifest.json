@@ -5,56 +5,30 @@
   "title": "B2B Checkout Settings",
   "description": "Adds B2B functionalities to the checkout",
   "builders": {
-    "docs": "0.x",
+    "admin": "0.x",
     "checkout-ui-custom": "0.x",
+    "docs": "0.x",
+    "graphql": "1.x",
+    "messages": "1.x",
     "node": "6.x",
+    "react": "3.x",
     "vtex.storefront-permissions": "1.x"
   },
   "dependencies": {
     "vtex.graphql-server": "1.x",
+    "vtex.styleguide": "9.x",
     "vtex.b2b-organizations-graphql": "0.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
   },
   "credentialType": "absolute",
-  "settingsSchema": {
-    "title": "B2B Checkout Settings",
-    "type": "object",
-    "properties": {
-      "showPONumber": {
-        "title": "Show Purchase Order Number",
-        "type": "boolean",
-        "default": false,
-        "description": "Enable the PO Number field at the checkout page"
-      },
-      "hasPONumber": {
-        "title": "Has PO Number setup",
-        "type": "boolean",
-        "default": false,
-        "description": "Would be true if PONumber is already set to the checkout"
-      },
-      "showQuoteButton": {
-        "title": "Show Create a Quote button",
-        "type": "boolean",
-        "default": false,
-        "description": "Enable the Create a Quote button at the checkout page"
-      }
-    }
-  },
-  "settingsUiSchema": {
-    "ui:order": [
-      "showPONumber",
-      "hasPONumber",
-      "showQuoteButton"
-    ],
-    "hasPONumber": {
-      "ui:widget": "hidden"
-    }
-  },
   "policies": [
     {
       "name": "vtex.graphql-server:resolve-graphql"
+    },
+    {
+      "name": "vbase-read-write"
     },
     {
       "name": "update-app-settings"
