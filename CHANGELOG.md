@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Update version number of sender app when performing graphQL queries
+- Additional null checking in checkout6-custom.js
+
 ## [1.0.0] - 2022-02-22
 
 ### Added
