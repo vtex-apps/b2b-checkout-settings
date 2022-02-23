@@ -203,7 +203,7 @@
   }
 
   const checkQuotes = function () {
- if (
+    if (
       window.vtexjs &&
       window.vtexjs.checkout &&
       window.vtexjs.checkout.orderForm &&
