@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.2] - 2022-02-24
+
 ### Fixed
 
 - Apply `!important` to CSS rules to ensure appropriate payment methods are hidden
