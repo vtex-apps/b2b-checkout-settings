@@ -22,7 +22,7 @@
 button.vtex-omnishipping-1-x-buttonEditAddress,
 button.vtex-omnishipping-1-x-buttonCreateAddress,
 .orderform-template-holder #payment-data .payment-group-item {
-  display: none;
+  display: none !important;
 }
 body.change-profile .client-profile-data a.link-box-edit,
 body.edit-shipping button.vtex-omnishipping-1-x-buttonEditAddress,
@@ -30,11 +30,11 @@ body.add-shipping button.vtex-omnishipping-1-x-buttonCreateAddress,
 .orderform-template-holder
   #payment-data
   .payment-group-item[data-b2b-allowed='true'] {
-  display: block;
+  display: block !important;
 }
 
 .btn-b2b-primary {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .item-disabled {
