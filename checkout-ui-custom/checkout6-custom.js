@@ -38,6 +38,23 @@
 
   window.b2bCheckoutSettings = window.b2bCheckoutSettings || settings
 
+  const buildClearCartButton = function () {
+    if ($('#clear-cart').length > 0) {
+      return
+    }
+
+    const label =
+      translation[window.vtex.i18n.getLocale()].clearCartLabel || 'Clear Cart'
+
+    const btn = $(
+      `<button id='clear-cart' class='btn btn-large btn-primary btn-b2b-primary'>${label}</button>`
+    )
+
+    btn.click(removeCartItemsAndQuote)
+
+    $('div.cart').append(btn)
+  }
+
   const buildCreateQuoteButton = function () {
     const label =
       translation[window.vtex.i18n.getLocale()].createQuoteButtonLabel ||
@@ -102,6 +119,29 @@
         url: `${window.location.origin}/api/checkout/pub/orderForm/${orderFormID}/customData/b2b-checkout-settings/purchaseOrderNumber`,
         type: purchaseOrderNumber ? 'PUT' : 'DELETE',
         data: { value: purchaseOrderNumber },
+      })
+    })
+  }
+
+  const removeCartItemsAndQuote = function () {
+    const orderFormID = window.vtexjs.checkout.orderFormId
+
+    $.ajax({
+      url: `${window.location.origin}/api/checkout/pub/orderForm/${orderFormID}/items/removeAll`,
+      type: 'POST',
+      data: {
+        expectedOrderFormSections: ['items'],
+      },
+    }).then(function () {
+      $.ajax({
+        url: `${window.location.origin}/api/checkout/pub/orderForm/${orderFormID}/customData/b2b-quotes-graphql/quoteId`,
+        type: 'PUT',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify({
+          value: 0,
+        }),
+      }).then(function () {
+        window.location.reload()
       })
     })
   }
@@ -216,7 +256,10 @@
           return item.id === 'b2b-quotes-graphql'
         })
 
-        if (index !== -1 && customData.customApps[index].fields.quoteId) {
+        const { quoteId } = customData.customApps[index].fields
+
+        if (index !== -1 && quoteId && parseInt(quoteId, 10) !== 0) {
+          buildClearCartButton()
           const selectorsToLock = [
             'td.quantity',
             'a.manualprice-link-remove',
