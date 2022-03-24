@@ -157,8 +157,14 @@
       allOptions.forEach(function (obj) {
         const currOption = obj.innerText.trim()
 
+        const isCreditCard = currOption.indexOf('Credit card') === 0
+
         if (
           permissions.paymentTerms.findIndex(function (pmt) {
+            if (isCreditCard) {
+              return pmt.name === 'Credit card'
+            }
+
             return pmt.name === currOption
           }) === -1
         ) {
@@ -171,14 +177,14 @@
 
         obj.setAttribute('data-b2b-allowed', 'true')
       })
-    }
 
-    if (
-      permissions.paymentTerms.findIndex(function (pmt) {
-        return pmt.name === activeOptionText
-      }) === -1
-    ) {
-      $(firstOption).click()
+      if (
+        permissions.paymentTerms.findIndex(function (pmt) {
+          return pmt.name === activeOptionText
+        }) === -1
+      ) {
+        $(firstOption).click()
+      }
     }
   }
 
