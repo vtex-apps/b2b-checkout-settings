@@ -124,26 +124,17 @@
   }
 
   const removeCartItemsAndQuote = function () {
-    const orderFormID = window.vtexjs.checkout.orderFormId
-
-    $.ajax({
-      url: `${window.location.origin}/api/checkout/pub/orderForm/${orderFormID}/items/removeAll`,
-      type: 'POST',
-      data: {
-        expectedOrderFormSections: ['items'],
-      },
-    }).then(function () {
-      $.ajax({
-        url: `${window.location.origin}/api/checkout/pub/orderForm/${orderFormID}/customData/b2b-quotes-graphql/quoteId`,
-        type: 'PUT',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify({
-          value: 0,
-        }),
-      }).then(function () {
-        window.location.reload()
+    if (window.vtexjs && window.vtexjs.checkout) {
+      window.vtexjs.checkout.removeAllItems().then(function () {
+        window.vtexjs.checkout
+          .setCustomData({
+            value: 0,
+            app: 'b2b-quotes-graphql',
+            field: 'quoteId',
+          })
+          .then(function () {})
       })
-    })
+    }
   }
 
   const showPaymentOptions = function (permissions) {
