@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added the clear cart button and set the quoteId to 0
 
+## [1.0.4] - 2022-03-23
+
+### Fixed
+
+- Updated README.md file with correct image links
+
 ## [1.0.3] - 2022-03-22
 
 ### Changed
