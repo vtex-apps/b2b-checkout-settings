@@ -38,6 +38,23 @@
 
   window.b2bCheckoutSettings = window.b2bCheckoutSettings || settings
 
+  const buildClearCartButton = function () {
+    if ($('#clear-cart').length > 0) {
+      return
+    }
+
+    const label =
+      translation[window.vtex.i18n.getLocale()].clearCartLabel || 'Clear Cart'
+
+    const btn = $(
+      `<button id='clear-cart' class='btn btn-large btn-primary btn-b2b-primary'>${label}</button>`
+    )
+
+    btn.click(removeCartItemsAndQuote)
+
+    $('div.cart').append(btn)
+  }
+
   const buildCreateQuoteButton = function () {
     const label =
       translation[window.vtex.i18n.getLocale()].createQuoteButtonLabel ||
@@ -104,6 +121,20 @@
         data: { value: purchaseOrderNumber },
       })
     })
+  }
+
+  const removeCartItemsAndQuote = function () {
+    if (window.vtexjs && window.vtexjs.checkout) {
+      window.vtexjs.checkout.removeAllItems().then(function () {
+        window.vtexjs.checkout
+          .setCustomData({
+            value: 0,
+            app: 'b2b-quotes-graphql',
+            field: 'quoteId',
+          })
+          .then(function () {})
+      })
+    }
   }
 
   const showPaymentOptions = function (permissions) {
@@ -216,7 +247,10 @@
           return item.id === 'b2b-quotes-graphql'
         })
 
-        if (index !== -1 && customData.customApps[index].fields.quoteId) {
+        const { quoteId } = customData.customApps[index].fields
+
+        if (index !== -1 && quoteId && parseInt(quoteId, 10) !== 0) {
+          buildClearCartButton()
           const selectorsToLock = [
             'td.quantity',
             'a.manualprice-link-remove',
