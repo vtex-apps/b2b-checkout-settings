@@ -146,7 +146,11 @@
       '.orderform-template-holder #payment-data .payment-group-item.active'
     )
 
-    const activeOptionText = activeOption ? activeOption.innerText.trim() : ''
+    const activeOptionText = activeOption
+      ? activeOption.innerText.trim().toLowerCase()
+      : ''
+
+    const isCreditCardActive = activeOptionText.indexOf('credit card') === 0
     let firstOption = null
 
     if (
@@ -155,11 +159,17 @@
       permissions.paymentTerms.length
     ) {
       allOptions.forEach(function (obj) {
-        const currOption = obj.innerText.trim()
+        const currOption = obj.innerText.trim().toLowerCase()
+
+        const isCreditCard = currOption.indexOf('credit card') === 0
 
         if (
           permissions.paymentTerms.findIndex(function (pmt) {
-            return pmt.name === currOption
+            if (isCreditCard) {
+              return pmt.name.toLowerCase() === 'credit card'
+            }
+
+            return pmt.name.toLowerCase() === currOption
           }) === -1
         ) {
           return
@@ -171,14 +181,18 @@
 
         obj.setAttribute('data-b2b-allowed', 'true')
       })
-    }
 
-    if (
-      permissions.paymentTerms.findIndex(function (pmt) {
-        return pmt.name === activeOptionText
-      }) === -1
-    ) {
-      $(firstOption).click()
+      if (
+        permissions.paymentTerms.findIndex(function (pmt) {
+          if (isCreditCardActive) {
+            return pmt.name.toLowerCase() === 'credit card'
+          }
+
+          return pmt.name.toLowerCase() === activeOptionText
+        }) === -1
+      ) {
+        $(firstOption).click()
+      }
     }
   }
 
