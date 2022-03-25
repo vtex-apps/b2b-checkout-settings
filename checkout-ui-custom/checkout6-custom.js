@@ -155,17 +155,17 @@
       permissions.paymentTerms.length
     ) {
       allOptions.forEach(function (obj) {
-        const currOption = obj.innerText.trim()
+        const currOption = obj.innerText.trim().toLowerCase()
 
-        const isCreditCard = currOption.indexOf('Credit card') === 0
+        const isCreditCard = currOption.indexOf('credit card') === 0
 
         if (
           permissions.paymentTerms.findIndex(function (pmt) {
             if (isCreditCard) {
-              return pmt.name === 'Credit card'
+              return pmt.name.toLowerCase() === 'credit card'
             }
 
-            return pmt.name === currOption
+            return pmt.name.toLowerCase() === currOption
           }) === -1
         ) {
           return
