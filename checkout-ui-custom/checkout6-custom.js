@@ -146,7 +146,11 @@
       '.orderform-template-holder #payment-data .payment-group-item.active'
     )
 
-    const activeOptionText = activeOption ? activeOption.innerText.trim() : ''
+    const activeOptionText = activeOption
+      ? activeOption.innerText.trim().toLowerCase()
+      : ''
+
+    const isCreditCardActive = activeOptionText.indexOf('credit card') === 0
     let firstOption = null
 
     if (
@@ -180,7 +184,11 @@
 
       if (
         permissions.paymentTerms.findIndex(function (pmt) {
-          return pmt.name === activeOptionText
+          if (isCreditCardActive) {
+            return pmt.name.toLowerCase() === 'credit card'
+          }
+
+          return pmt.name.toLowerCase() === activeOptionText
         }) === -1
       ) {
         $(firstOption).click()
