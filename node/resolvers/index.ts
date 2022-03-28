@@ -189,14 +189,17 @@ export const resolvers = {
         if (
           userSession?.namespaces?.['storefront-permissions']?.costcenter?.value
         ) {
+          settings.costCenterId =
+            userSession?.namespaces?.[
+              'storefront-permissions'
+            ]?.costcenter?.value
           const {
             data: { getCostCenterById },
           }: any = await graphQLServer
             .query(
               QUERIES.getAddresses,
               {
-                id: userSession.namespaces['storefront-permissions'].costcenter
-                  .value,
+                id: settings.costCenterId,
               },
               {
                 persistedQuery: {
@@ -241,14 +244,17 @@ export const resolvers = {
           userSession?.namespaces?.['storefront-permissions']?.organization
             ?.value
         ) {
+          settings.organizationId =
+            userSession?.namespaces?.[
+              'storefront-permissions'
+            ]?.organization?.value
           const {
             data: { getOrganizationById },
           }: any = await graphQLServer
             .query(
               QUERIES.getOrganizationDetails,
               {
-                id: userSession.namespaces['storefront-permissions']
-                  .organization.value,
+                id: settings.organizationId,
               },
               {
                 persistedQuery: {
