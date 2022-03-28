@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- If user does not have marketing data (organization and cost center IDs) set in their orderForm at time of checkout, set it
+
 ## [1.1.1] - 2022-03-25
 
 ### Added

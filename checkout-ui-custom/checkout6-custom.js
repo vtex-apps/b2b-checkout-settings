@@ -215,6 +215,17 @@
     showPaymentOptions(settings)
   }
 
+  const applyMarketingData = function (organizationId, costCenterId) {
+    if (!organizationId || !costCenterId) return false
+
+    const marketingData = {
+      utmCampaign: organizationId,
+      utmMedium: costCenterId,
+    }
+
+    window.vtexjs.checkout.sendAttachment('marketingData', marketingData)
+  }
+
   const handleSettings = function () {
     if (settings.showPONumber === true) {
       buildPOField()
@@ -226,6 +237,17 @@
 
     if (settings.showQuoteButton) {
       buildCreateQuoteButton()
+    }
+
+    if (
+      window.vtexjs &&
+      window.vtexjs.checkout &&
+      window.vtexjs.checkout.orderForm &&
+      window.vtexjs.checkout.orderForm.marketingData &&
+      (!window.vtexjs.checkout.orderForm.marketingData.utmCampaign ||
+        !window.vtexjs.checkout.orderForm.marketingData.utmMedium)
+    ) {
+      applyMarketingData(settings.organizationId, settings.costCenterId)
     }
 
     window.b2bCheckoutSettings = settings
