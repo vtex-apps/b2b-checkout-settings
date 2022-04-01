@@ -231,16 +231,18 @@ const CREDIT_CARDS = [
     }
 
     // Show payment options available
-    checkPayment = setInterval(function () {
-      if (
-        document.querySelectorAll(
-          '.orderform-template-holder #payment-data .payment-group-item'
-        ).length > 0
-      ) {
-        clearInterval(checkPayment)
-        showPaymentOptions(settings)
-      }
-    }, 500)
+    if (step.includes('payment')) {
+      checkPayment = setInterval(function () {
+        if (
+          document.querySelectorAll(
+            '.orderform-template-holder #payment-data .payment-group-item'
+          ).length > 0
+        ) {
+          clearInterval(checkPayment)
+          showPaymentOptions(settings)
+        }
+      }, 500)
+    }
   }
 
   const applyMarketingData = function (organizationId, costCenterId) {
@@ -396,5 +398,5 @@ const CREDIT_CARDS = [
     }
   }
 
-  window.addEventListener('hashchange', initialize())
+  $(window).on('hashchange', () => initialize())
 })()

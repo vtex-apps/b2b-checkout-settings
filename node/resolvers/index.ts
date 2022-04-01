@@ -72,7 +72,7 @@ export const resolvers = {
     settings: async (ctx: Context) => {
       const {
         clients: { graphQLServer, checkout, session, vbase },
-        vtex: { logger, storeUserAuthToken, production },
+        vtex: { host, logger, storeUserAuthToken, production },
       } = ctx
 
       const token: any = storeUserAuthToken
@@ -80,7 +80,7 @@ export const resolvers = {
       ctx.set('Content-Type', 'application/json')
       ctx.set('Cache-Control', 'no-cache, no-store')
 
-      if (!token) {
+      if (!token && !host?.includes('myvtex.com')) {
         ctx.response.body = {
           error: 'User not authenticated',
         }
