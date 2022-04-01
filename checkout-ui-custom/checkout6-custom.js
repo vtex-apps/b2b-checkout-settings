@@ -231,7 +231,16 @@ const CREDIT_CARDS = [
     }
 
     // Show payment options available
-    showPaymentOptions(settings)
+    checkPayment = setInterval(function () {
+      if (
+        document.querySelectorAll(
+          '.orderform-template-holder #payment-data .payment-group-item'
+        ).length > 0
+      ) {
+        clearInterval(checkPayment)
+        showPaymentOptions(settings)
+      }
+    }, 500)
   }
 
   const applyMarketingData = function (organizationId, costCenterId) {
@@ -363,7 +372,7 @@ const CREDIT_CARDS = [
   checkQuotes()
   watchQuotes()
 
-  window.addEventListener('hashchange', function () {
+  const initialize = function () {
     const message = window.sessionStorage.getItem('message')
 
     if (settings.permissions) {
@@ -385,5 +394,7 @@ const CREDIT_CARDS = [
       })
       window.sessionStorage.removeItem('message')
     }
-  })
+  }
+
+  window.addEventListener('hashchange', initialize())
 })()
