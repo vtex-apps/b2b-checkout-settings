@@ -232,7 +232,7 @@ const CREDIT_CARDS = [
 
     // Show payment options available
     if (step.includes('payment')) {
-      checkPayment = setInterval(function () {
+      const checkPayment = setInterval(function () {
         if (
           document.querySelectorAll(
             '.orderform-template-holder #payment-data .payment-group-item'
