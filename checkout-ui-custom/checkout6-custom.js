@@ -1,6 +1,25 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable func-names */
+const CREDIT_CARDS = [
+  'visa',
+  'mastercard',
+  'diners',
+  'american express',
+  'hipercard',
+  'discover',
+  'aura',
+  'elo',
+  'banricompras',
+  'jcb',
+  'cabal',
+  'nativa',
+  'naranja',
+  'nevada',
+  'shopping',
+  'credz',
+]
+
 !(function () {
   console.log('B2B Checkout Settings')
   let checkVtex = null
@@ -147,10 +166,10 @@
     )
 
     const activeOptionText = activeOption
-      ? activeOption.innerText.trim().toLowerCase()
+      ? activeOption.dataset.name.toLowerCase()
       : ''
 
-    const isCreditCardActive = activeOptionText.indexOf('credit card') === 0
+    const isCreditCardActive = CREDIT_CARDS.includes(activeOptionText)
     let firstOption = null
 
     if (
@@ -159,9 +178,9 @@
       permissions.paymentTerms.length
     ) {
       allOptions.forEach(function (obj) {
-        const currOption = obj.innerText.trim().toLowerCase()
+        const currOption = obj.dataset.name.toLowerCase()
 
-        const isCreditCard = currOption.indexOf('credit card') === 0
+        const isCreditCard = CREDIT_CARDS.includes(currOption)
 
         if (
           permissions.paymentTerms.findIndex(function (pmt) {
@@ -212,7 +231,18 @@
     }
 
     // Show payment options available
-    showPaymentOptions(settings)
+    if (step.includes('payment')) {
+      const checkPayment = setInterval(function () {
+        if (
+          document.querySelectorAll(
+            '.orderform-template-holder #payment-data .payment-group-item'
+          ).length > 0
+        ) {
+          clearInterval(checkPayment)
+          showPaymentOptions(settings)
+        }
+      }, 500)
+    }
   }
 
   const applyMarketingData = function (organizationId, costCenterId) {
@@ -344,7 +374,7 @@
   checkQuotes()
   watchQuotes()
 
-  window.addEventListener('hashchange', function () {
+  const initialize = function () {
     const message = window.sessionStorage.getItem('message')
 
     if (settings.permissions) {
@@ -366,5 +396,7 @@
       })
       window.sessionStorage.removeItem('message')
     }
-  })
+  }
+
+  $(window).on('hashchange', () => initialize())
 })()
