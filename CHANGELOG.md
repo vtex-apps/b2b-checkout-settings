@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- added an expiration time (5 minutes) for b2b-checkout-settings sessionStorage item 
+
+
 ## [1.2.0] - 2022-04-02
 
 ### Fixed

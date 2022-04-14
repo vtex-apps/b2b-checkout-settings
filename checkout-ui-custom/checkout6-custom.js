@@ -20,6 +20,8 @@ const CREDIT_CARDS = [
   'credz',
 ]
 
+const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
+
 !(function () {
   console.log('B2B Checkout Settings')
   let checkVtex = null
@@ -51,9 +53,22 @@ const CREDIT_CARDS = [
     return window.__RUNTIME__.workspace !== 'master'
   }
 
-  let settings =
-    JSON.parse(window.sessionStorage.getItem('b2b-checkout-settings')) ||
-    undefined
+  const sessionStorageCheckout = window.sessionStorage.getItem(
+    'b2b-checkout-settings'
+  )
+
+  if (sessionStorageCheckout && sessionStorageCheckout.time) {
+    const now = new Date().getTime()
+    const sessionStorageCheckoutTime = new Date(
+      sessionStorageCheckout.time
+    ).getTime()
+
+    if (now - sessionStorageCheckoutTime > MAX_TIME_EXPIRATION) {
+      window.sessionStorage.removeItem('b2b-checkout-settings')
+    }
+  }
+
+  let settings = JSON.parse(sessionStorageCheckout) || undefined
 
   window.b2bCheckoutSettings = window.b2bCheckoutSettings || settings
 
@@ -350,6 +365,7 @@ const CREDIT_CARDS = [
         isWorkspace() ? `?v=${ts}` : ''
       }`,
     }).then(function (response) {
+      response.time = new Date().toISOString()
       window.sessionStorage.setItem(
         'b2b-checkout-settings',
         JSON.stringify(response)
