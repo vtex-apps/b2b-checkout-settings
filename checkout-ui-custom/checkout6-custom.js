@@ -53,22 +53,18 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     return window.__RUNTIME__.workspace !== 'master'
   }
 
-  const sessionStorageCheckout = window.sessionStorage.getItem(
-    'b2b-checkout-settings'
-  )
+  let settings =
+    JSON.parse(window.sessionStorage.getItem('b2b-checkout-settings')) ||
+    undefined
 
-  if (sessionStorageCheckout && sessionStorageCheckout.time) {
+  if (settings && settings.time) {
     const now = new Date().getTime()
-    const sessionStorageCheckoutTime = new Date(
-      sessionStorageCheckout.time
-    ).getTime()
+    const sessionStorageCheckoutTime = new Date(settings.time).getTime()
 
     if (now - sessionStorageCheckoutTime > MAX_TIME_EXPIRATION) {
       window.sessionStorage.removeItem('b2b-checkout-settings')
     }
   }
-
-  let settings = JSON.parse(sessionStorageCheckout) || undefined
 
   window.b2bCheckoutSettings = window.b2bCheckoutSettings || settings
 
