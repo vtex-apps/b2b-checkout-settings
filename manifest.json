@@ -1,7 +1,7 @@
 {
   "name": "b2b-checkout-settings",
   "vendor": "vtex",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "title": "B2B Checkout Settings",
   "description": "Adds B2B functionalities to the checkout",
   "builders": {
