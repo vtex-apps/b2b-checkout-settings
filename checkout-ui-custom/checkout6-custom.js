@@ -65,7 +65,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 
   if (storedSettings && storedSettings.time) {
     const now = new Date().getTime()
-    const sessionStorageCheckoutTime = new Date(settings.time).getTime()
+    const sessionStorageCheckoutTime = new Date(storedSettings.time).getTime()
 
     if (
       now - sessionStorageCheckoutTime < MAX_TIME_EXPIRATION &&
