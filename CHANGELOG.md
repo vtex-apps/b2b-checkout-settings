@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a bug on checking impersonation email expiration
+
+
 ## [1.3.0] - 2022-04-15
 
 ### Added
