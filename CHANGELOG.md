@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the bug related to the quantity when the order comes from quotes.
+
 ## [1.3.1] - 2022-04-21
 
 ### Fixed

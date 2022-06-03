@@ -1,3 +1,6 @@
+.pointer-events-none {
+  pointer-events: none;
+}
 .b2b-purchase-order-number {
   margin-bottom: 15px;
 }
