@@ -304,22 +304,6 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     window.b2bCheckoutSettings = settings
   }
 
-  let checkQuotesCounter = 0
-  let checkQuotesInterval = null
-
-  const watchQuotes = function () {
-    if (checkQuotesInterval) {
-      clearInterval(checkQuotesInterval)
-    }
-
-    checkQuotesInterval = setInterval(function () {
-      checkQuotes()
-      if (checkQuotesCounter >= 10000) {
-        clearInterval(checkQuotesInterval)
-      }
-    }, 400)
-  }
-
   const checkQuotes = function () {
     if (
       window.vtexjs &&
@@ -338,25 +322,71 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 
         if (index !== -1 && quoteId && parseInt(quoteId, 10) !== 0) {
           buildClearCartButton()
-          const selectorsToLock = [
-            'td.quantity',
-            'a.manualprice-link-remove',
-            'span.new-product-price',
-            'td.item-remove',
-          ]
-
-          selectorsToLock.forEach(function (selector) {
-            if (!$(selector).hasClass('item-disabled')) {
-              checkQuotesCounter = 0
-              $(selector).addClass('item-disabled')
-            } else {
-              checkQuotesCounter++
-            }
-          })
+          lockFields()
         }
       }
     }
   }
+
+  const observeDOM = (function () {
+    const MutationObserver =
+      window.MutationObserver || window.WebKitMutationObserver
+
+    return function (obj, callback) {
+      if (!obj || obj.nodeType !== 1) return
+
+      if (MutationObserver) {
+        // define a new observer
+        const mutationObserver = new MutationObserver(callback)
+
+        // have the observer observe foo for changes in children
+        mutationObserver.observe(obj, { childList: true, subtree: true })
+
+        return mutationObserver
+      }
+
+      // browser support fallback
+      if (window.addEventListener) {
+        obj.addEventListener('DOMNodeInserted', callback, false)
+        obj.addEventListener('DOMNodeRemoved', callback, false)
+      }
+    }
+  })()
+
+  const selectorsToLock = [
+    'td.quantity',
+    'a.manualprice-link-remove',
+    'span.new-product-price',
+    'td.item-remove',
+  ]
+
+  const lockFields = function () {
+    selectorsToLock.forEach(function (selector) {
+      if (!$(selector).hasClass('item-disabled')) {
+        $(selector).addClass('item-disabled')
+      }
+    })
+  }
+
+  const observer = new MutationObserver(function () {
+    const cartItems = document.querySelector('.cart-items')
+
+    if (cartItems) {
+      observer.disconnect()
+      observeDOM(cartItems, function () {
+        cartItems.classList.add('pointer-events-none')
+        checkQuotes()
+        setTimeout(function () {
+          cartItems.classList.remove('pointer-events-none')
+        }, 500)
+      })
+    }
+  })
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  })
 
   const fetchSettings = function () {
     const rootPath =
@@ -402,9 +432,6 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       }
     }
   }, 500)
-
-  checkQuotes()
-  watchQuotes()
 
   const initialize = function () {
     const message = window.sessionStorage.getItem('message')
