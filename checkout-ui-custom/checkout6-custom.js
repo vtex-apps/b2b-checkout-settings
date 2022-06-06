@@ -65,7 +65,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     }
 
     // default to EN if language not supported
-    return translation[locale] ? translation[locale] : translation.en
+    return translation[locale] || translation.en
   }
 
   // Used to remove cache from requests
