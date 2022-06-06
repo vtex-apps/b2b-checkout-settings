@@ -104,6 +104,8 @@ export const resolvers = {
               })
             })
 
+          accountSettings.hasPONumber = true
+
           // Check if checkout has b2b-checkout-settings app
           if (
             checkoutConfig?.apps.findIndex(
@@ -120,6 +122,8 @@ export const resolvers = {
               .setOrderFormConfiguration(checkoutConfig, ctx.vtex.authToken)
               .then(() => true)
               .catch(error => {
+                accountSettings.hasPONumber = false
+
                 logger.error({
                   message: 'setOrderformConfiguration-error',
                   error,
@@ -129,7 +133,6 @@ export const resolvers = {
               })
 
             if (setCheckoutConfig) {
-              accountSettings.hasPONumber = true
               await vbase
                 .saveJSON(VBASE_BUCKET, VBASE_SETTINGS_FILE, accountSettings)
                 .catch(error => {
