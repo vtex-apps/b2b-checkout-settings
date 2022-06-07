@@ -25,27 +25,47 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 !(function () {
   console.log('B2B Checkout Settings')
   let checkVtex = null
-  const translation = {
-    'pt-BR': {
-      cartPurchaseOrderLabel: 'Número do Pedido',
-      createQuoteButtonLabel: 'Criar uma Cotação',
-      messages: {
-        'b2b-access-denied': {
-          title: 'Acesso',
-          detail: 'Você não tem acesso ao checkout',
+
+  const getTranslation = function () {
+    const locale = window.vtex.i18n.getLocale()
+    const translation = {
+      'pt-BR': {
+        cartPurchaseOrderLabel: 'Número do Pedido',
+        createQuoteButtonLabel: 'Criar uma Cotação',
+        messages: {
+          'b2b-access-denied': {
+            title: 'Acesso',
+            detail: 'Você não tem acesso ao checkout',
+          },
         },
+        clearCartLabel: 'Limpar carrinho',
       },
-    },
-    en: {
-      cartPurchaseOrderLabel: 'Reference or PO Number',
-      createQuoteButtonLabel: 'Create a Quote',
-      messages: {
-        'b2b-access-denied': {
-          title: 'ACCESS',
-          detail: "You don't have access to the checkout",
+      en: {
+        cartPurchaseOrderLabel: 'Reference or PO Number',
+        createQuoteButtonLabel: 'Create a Quote',
+        messages: {
+          'b2b-access-denied': {
+            title: 'ACCESS',
+            detail: "You don't have access to the checkout",
+          },
         },
+        clearCartLabel: 'Clear Cart',
       },
-    },
+      es: {
+        cartPurchaseOrderLabel: 'Número de referencia o número del pedido',
+        createQuoteButtonLabel: 'Crear un presupuesto',
+        messages: {
+          'b2b-access-denied': {
+            title: 'ACCESO',
+            detail: 'No tienes acceso al checkout',
+          },
+        },
+        clearCartLabel: 'Limpiar carrito',
+      },
+    }
+
+    // default to EN if language not supported
+    return translation[locale] || translation.en
   }
 
   // Used to remove cache from requests
@@ -83,8 +103,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       return
     }
 
-    const label =
-      translation[window.vtex.i18n.getLocale()].clearCartLabel || 'Clear Cart'
+    const label = getTranslation().clearCartLabel
 
     const btn = $(
       `<button id='clear-cart' class='btn btn-large btn-primary btn-b2b-primary'>${label}</button>`
@@ -96,9 +115,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   }
 
   const buildCreateQuoteButton = function () {
-    const label =
-      translation[window.vtex.i18n.getLocale()].createQuoteButtonLabel ||
-      'Create Quote'
+    const label = getTranslation().createQuoteButtonLabel
 
     const targets = [
       '.cart-links.cart-links-bottom',
@@ -141,8 +158,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     <div class="b2b-purchase-order-number">
     <p class="b2b-purchase-order-number-label">
     <label for="cart-b2b-purchase-order-number">${
-      translation[window.vtex.i18n.getLocale()].cartPurchaseOrderLabel ||
-      'Reference or PO Number'
+      getTranslation().cartPurchaseOrderLabel
     }</label>
     </p>
     <input class="input-small b2b-purchase-order-number-input" type="text" id="cart-b2b-purchase-order-number" value="${currValue}">
@@ -445,12 +461,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         type: 'info',
         id: message,
         content: {
-          title:
-            translation[window.vtex.i18n.getLocale()].messages[message].title ||
-            'Access',
-          detail:
-            translation[window.vtex.i18n.getLocale()].messages[message]
-              .detail || "You don't have access to checkout",
+          title: getTranslation().messages[message].title,
+          detail: getTranslation().messages[message].detail,
         },
       })
       window.sessionStorage.removeItem('message')

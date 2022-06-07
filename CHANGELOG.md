@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Added Spanish translations
+
+### Fixed
+
+- Fixed bug preventing PO Number field from displaying in locales without translations. Default to English if translation for locale is not available
+- Fixed bug to set `hasPONumber` to `true` if orderForm has already been configured to accept `purchaseOrderNumber` field
+
 ## [1.3.2] - 2022-06-03
 
 ### Fixed
@@ -19,13 +28,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed a bug on checking impersonation email expiration
 
-
 ## [1.3.0] - 2022-04-15
 
 ### Added
 
-- added an expiration time (5 minutes) for b2b-checkout-settings sessionStorage item 
-
+- added an expiration time (5 minutes) for b2b-checkout-settings sessionStorage item
 
 ## [1.2.0] - 2022-04-02
 
