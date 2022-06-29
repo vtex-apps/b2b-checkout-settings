@@ -13,7 +13,7 @@
   "workers": 1,
   "routes": {
     "settings": {
-      "path": "/b2b-checkout-settings/",
+      "path": "/_v/private/b2b-checkout-settings/",
       "public": true
     }
   }

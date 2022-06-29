@@ -413,7 +413,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     const ts = new Date().getTime()
 
     $.ajax({
-      url: `${rootPath}/b2b-checkout-settings/${
+      url: `${rootPath}/_v/private/b2b-checkout-settings/${
         isWorkspace() ? `?v=${ts}` : ''
       }`,
     }).then(function (response) {
