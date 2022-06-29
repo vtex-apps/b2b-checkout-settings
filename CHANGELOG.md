@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.4] - 2022-06-29
+
 ### Fixed
 
 - Fixed bug returning `User not authenticated` error for logged in users when getting `b2b-checkout-settings` in production domains
