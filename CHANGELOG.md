@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.5] - 2022-07-04
+
 ### Added
 
 - Initial Crowdin integration
