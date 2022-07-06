@@ -1,0 +1,11 @@
+{
+  "admin/b2bCheckoutSettings.navigation.title": "Configurações de checkout B2B",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Configurações salvas",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Erro ao salvar as configurações. Consulte o console para mais detalhes.",
+  "admin/b2bCheckoutSettings.settings.title": "Configurações de checkout B2B",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Mostrar campo do número da ordem de compra (OC)",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Habilita o campo de OC na página do checkout",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Mostrar botão 'Criar uma cotação'",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Habilita o botão 'Criar uma cotação' no checkout — apenas se o B2B Quotes (vtex.b2b-quotes) estiver instalado!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Salvar"
+}
