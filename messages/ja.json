@@ -1,0 +1,11 @@
+{
+  "admin/b2bCheckoutSettings.navigation.title": "B2B チェックアウト設定",
+  "admin/b2bCheckoutSettings.saveSettings.success": "設定を保存しました",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "設定を保存できませんでした。詳細はコンソールを確認してください。",
+  "admin/b2bCheckoutSettings.settings.title": "B2B チェックアウト設定",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "発注書 (PO) 番号フィールドを表示する",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "チェックアウトページの PO 番号フィールドを有効にする",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "「見積もり作成」ボタンを表示する",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "チェックアウトの「見積もり作成」ボタンを有効にします。これは、B2B 見積もり (vtex.b2b-quotes) がインストールされている場合に限ります！",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "保存"
+}
