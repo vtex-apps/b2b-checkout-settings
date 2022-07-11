@@ -1,0 +1,11 @@
+{
+  "admin/b2bCheckoutSettings.navigation.title": "Setări pentru plată B2B",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Setări salvate",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Eroare la salvarea setărilor. Consultă consola pentru detalii.",
+  "admin/b2bCheckoutSettings.settings.title": "Setări pentru plată B2B",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Afișează câmpul număr comandă de cumpărare (PO)",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Permite câmpul număr PO pe pagina de plată",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Afișează butonul „Creare ofertă”",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Activează butonul „Creează o ofertă” în rubrica de Plată — numai dacă sunt instalate oferte B2B (vtex.b2b-quotes)!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Salvează"
+}

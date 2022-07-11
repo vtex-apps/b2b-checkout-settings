@@ -1,0 +1,11 @@
+{
+  "admin/b2bCheckoutSettings.navigation.title": "B2B kassa-instellingen",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Instellingen opgeslagen",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Instellingen opslaan is mislukt. Zie console voor details.",
+  "admin/b2bCheckoutSettings.settings.title": "B2B kassa-instellingen",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Toon inkooporder (PO) nummerveld",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Schakelt het IO-nummerveld in op de afrekenpagina",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Knop 'Maak een offerte aan' weergeven",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Schakelt de knop 'Maak een offerte aan' in de kassa in - alleen als B2B offertes (vtex.b2b-quotes) zijn geïnstalleerd!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Opslaan"
+}

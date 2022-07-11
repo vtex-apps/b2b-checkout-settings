@@ -1,0 +1,11 @@
+{
+  "admin/b2bCheckoutSettings.navigation.title": "Настройки на B2B финализирането",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Настройките са запазени",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Неуспешно запазване на настройките. Вижте конзолата за подробности.",
+  "admin/b2bCheckoutSettings.settings.title": "Настройки на B2B финализирането",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Показване на полето с номер на поръчката за покупка (ПП)",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Активира полето за номер на ПП в страницата за финализиране",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Показване на бутон „Създаване на оферта“",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Активира бутона „Създаване на оферта“ при финализирането — само ако са инсталирани B2B оферти (vtex.b2b-quotes)!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Запазване"
+}
