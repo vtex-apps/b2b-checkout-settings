@@ -4,6 +4,8 @@ type Query {
 
 type Mutation {
   saveAppSettings(settings: SettingsInput!): Settings
+    @withAdminAccess
+    @cacheControl(scope: PRIVATE)
 }
 
 type Settings {

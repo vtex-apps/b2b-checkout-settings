@@ -46,20 +46,20 @@ const AppSettings: FC = () => {
         settings: settingsState,
       },
     })
-      .catch(err => {
-        console.error(err)
+      .then(() => {
         showToast({
           message: formatMessage({
-            id: 'admin/b2bCheckoutSettings.saveSettings.failure',
+            id: 'admin/b2bCheckoutSettings.saveSettings.success',
           }),
           duration: 5000,
         })
         setSettingsLoading(false)
       })
-      .then(() => {
+      .catch(err => {
+        console.error(err)
         showToast({
           message: formatMessage({
-            id: 'admin/b2bCheckoutSettings.saveSettings.success',
+            id: 'admin/b2bCheckoutSettings.saveSettings.failure',
           }),
           duration: 5000,
         })

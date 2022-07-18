@@ -3,17 +3,19 @@ import type {
   ServiceContext,
   ParamsContext,
   RecorderState,
+  Cached,
 } from '@vtex/api'
 import { LRUCache, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { resolvers } from './resolvers'
+import { schemaDirectives } from './resolvers/directives'
 
 const TIMEOUT_MS = 3000
 
 // Create a LRU memory cache for the Status client.
 // The @vtex/api HttpClient respects Cache-Control headers and uses the provided cache.
-const memoryCache = new LRUCache<string, any>({ max: 5000 })
+const memoryCache = new LRUCache<string, Cached>({ max: 5000 })
 
 metrics.trackCache('status', memoryCache)
 
@@ -46,5 +48,6 @@ export default new Service<Clients, RecorderState, ParamsContext>({
       Query: resolvers.Query,
       Mutation: resolvers.Mutation,
     },
+    schemaDirectives,
   },
 })
