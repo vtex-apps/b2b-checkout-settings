@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Added @checkAdminAccess @cacheControl directives.
+- Added resolvers/constants file.
+- Separate Queries, Mutations, Routes and Directives in it's own folder.
+- Separate file for Routes queries.
+
 ## [1.4.0] - 2022-07-11
 
 ### Added
