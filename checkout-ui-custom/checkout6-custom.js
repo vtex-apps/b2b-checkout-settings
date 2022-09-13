@@ -83,7 +83,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       ? window.vtexjs.checkout.orderForm.clientProfileData.email
       : null
 
-  if (storedSettings && storedSettings.time && storedSettings.organizationId) {
+  if (storedSettings && storedSettings.time) {
     const now = new Date().getTime()
     const sessionStorageCheckoutTime = new Date(storedSettings.time).getTime()
 
