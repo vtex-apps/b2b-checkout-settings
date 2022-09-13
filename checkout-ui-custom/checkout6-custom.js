@@ -83,7 +83,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       ? window.vtexjs.checkout.orderForm.clientProfileData.email
       : null
 
-  if (storedSettings && storedSettings.time) {
+  if (storedSettings && storedSettings.time && storedSettings.organizationId) {
     const now = new Date().getTime()
     const sessionStorageCheckoutTime = new Date(storedSettings.time).getTime()
 
@@ -417,6 +417,12 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         isWorkspace() ? `?v=${ts}` : ''
       }`,
     }).then(function (response) {
+      if (Object.keys(response).length === 0) {
+        window.sessionStorage.removeItem('b2b-checkout-settings')
+
+        return
+      }
+
       response.time = new Date().toISOString()
 
       if (

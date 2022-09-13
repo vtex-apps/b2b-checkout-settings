@@ -126,10 +126,18 @@ export default {
           })
         })
 
-      const settings = {
+      let settings = {
         ...DEFAULTS,
         ...accountSettings,
         ...checkUserPermission,
+      }
+
+      // allow users without organization or cost center to access checkout
+      if (
+        !userSession?.namespaces?.['storefront-permissions']?.organization ||
+        !userSession?.namespaces?.['storefront-permissions']?.costcenter
+      ) {
+        settings = {}
       }
 
       if (
