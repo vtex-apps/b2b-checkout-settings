@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Show all Shipping and Payment sections for non-B2B users
+
 ## [1.4.2] - 2022-09-15
 
 ### Fixed
