@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.4.2] - 2022-09-15
+
 ### Fixed
 
 - Allow non-B2B users to access checkout when B2B Checkout Settings app is installed
