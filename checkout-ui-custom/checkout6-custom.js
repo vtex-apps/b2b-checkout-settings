@@ -294,6 +294,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   }
 
   const handleSettings = function () {
+    if (!settings) return
+
     if (settings.showPONumber === true) {
       buildPOField()
     }
@@ -458,7 +460,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   const initialize = function () {
     const message = window.sessionStorage.getItem('message')
 
-    if (settings.permissions) {
+    if (settings && settings.permissions) {
       applyPermissions(settings.permissions)
     }
 
