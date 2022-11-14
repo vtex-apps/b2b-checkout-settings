@@ -294,6 +294,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   }
 
   const handleSettings = function () {
+    if (!settings) return
+
     if (settings.showPONumber === true) {
       buildPOField()
     }
@@ -417,6 +419,12 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         isWorkspace() ? `?v=${ts}` : ''
       }`,
     }).then(function (response) {
+      if (Object.keys(response).length === 0) {
+        window.sessionStorage.removeItem('b2b-checkout-settings')
+
+        return
+      }
+
       response.time = new Date().toISOString()
 
       if (
@@ -452,7 +460,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   const initialize = function () {
     const message = window.sessionStorage.getItem('message')
 
-    if (settings.permissions) {
+    if (settings && settings.permissions) {
       applyPermissions(settings.permissions)
     }
 

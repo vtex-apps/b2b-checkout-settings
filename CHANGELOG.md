@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- GitHub reusable workflow uptaded to v2
+
+## [1.4.3] - 2022-09-15
+
+### Fixed
+
+- Show all Shipping and Payment sections for non-B2B users
+
+## [1.4.2] - 2022-09-15
+
+### Fixed
+
+- Allow non-B2B users to access checkout when B2B Checkout Settings app is installed
+
+## [1.4.1] - 2022-07-19
+
+### Added
+
+- Added @checkAdminAccess @cacheControl directives.
+- Added resolvers/constants file.
+- Separate Queries, Mutations, Routes and Directives in it's own folder.
+- Separate file for Routes queries.
+
+## [1.4.0] - 2022-07-11
+
 ### Added
 
 - Bulgarian, Dutch, French, Italian, Japanese, Korean, Portuguese Romanian, Spanish and Thai translations.

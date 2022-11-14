@@ -9,10 +9,10 @@ on:
 jobs:
   quality-engineering:
     name: QE
-    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@main
+    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@v2
     with:
       nodeLint: true
-      nodeTest: true
+      nodeTest: false
       nodeSonar: true
       nodeSonarProjectKey: vtex-apps_b2b-checkout-settings
       nodeSonarOrganization: vtex-apps
