@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Cypress E2E automations tests.
+
 ### Changed
 
 - GitHub reusable workflow uptaded to v2
