@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Cypress E2E automations tests.
+
+### Added
+
 - GitHub dispatch workflow
 
 ### Changed
