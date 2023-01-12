@@ -232,3 +232,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - App settings route
 - Initial JS
+
+### Fixed
+
+- Add a semicolon at end of checkou6-custom.js to not break functionalities from `checkout ui custom` when using webpack together
