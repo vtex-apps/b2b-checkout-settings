@@ -22,6 +22,7 @@ jobs:
       nodeSonarProjectKey: vtex-apps_b2b-checkout-settings
       nodeSonarOrganization: vtex-apps
       cypress: true
+      cyRunnerTimeOut: 45
     secrets:
       githubToken: ${{ secrets.GITHUB_TOKEN }}
       sonarToken: ${{ secrets.SONAR_TOKEN }}
