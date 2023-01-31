@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable func-names */
+/* eslint-disable */
 const CREDIT_CARDS = [
   'visa',
   'mastercard',
@@ -478,4 +479,4 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   }
 
   $(window).on('hashchange', () => initialize())
-})();
+})()
