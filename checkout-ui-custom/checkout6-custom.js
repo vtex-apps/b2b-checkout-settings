@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable func-names */
+/* eslint-disable */
 const CREDIT_CARDS = [
   'visa',
   'mastercard',
