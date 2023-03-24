@@ -337,6 +337,10 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
           return item.id === 'b2b-quotes-graphql'
         })
 
+        const hasB2bQuote = index !== -1
+
+        if (!hasB2bQuote) return 
+
         const { quoteId } = customData.customApps[index].fields
 
         if (index !== -1 && quoteId && parseInt(quoteId, 10) !== 0) {
