@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Marketing data isn't always present, so it sometimes fails when checkout.marking data is being validated
+
 ### Changed
 
 - Run schedule job only on saturday
