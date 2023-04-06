@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.0] - 2023-04-06
+
 ### Fixed
 - Marketing data isn't always present, so it sometimes fails when checkout.marking data is being validated
 
