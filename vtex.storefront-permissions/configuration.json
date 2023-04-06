@@ -7,6 +7,18 @@
       "roles": ["store-admin", "sales-admin", "sales-manager"]
     },
     {
+      "label": "Can add shipping address",
+      "value": "add-shipping",
+      "roles": [
+        "store-admin",
+        "sales-admin",
+        "sales-manager",
+        "sales-representative",
+        "customer-admin",
+        "customer-approver"
+      ]
+    },
+    {
       "label": "Can checkout",
       "value": "can-checkout",
       "roles": [
