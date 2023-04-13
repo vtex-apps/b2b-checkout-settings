@@ -313,9 +313,9 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       window.vtexjs &&
       window.vtexjs.checkout &&
       window.vtexjs.checkout.orderForm &&
-      (!window.vtexjs.checkout.orderForm.marketingData ||
-        (!window.vtexjs.checkout.orderForm.marketingData.utmCampaign ||
-          !window.vtexjs.checkout.orderForm.marketingData.utmMedium))
+      window.vtexjs.checkout.orderForm.marketingData &&
+      (!window.vtexjs.checkout.orderForm.marketingData.utmCampaign ||
+        !window.vtexjs.checkout.orderForm.marketingData.utmMedium)
     ) {
       applyMarketingData(settings.organizationId, settings.costCenterId)
     }
@@ -394,7 +394,9 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       observer.disconnect()
       observeDOM(cartItems, function () {
         cartItems.classList.add('pointer-events-none')
-        checkQuotes()
+        if(b2bCheckoutSettings && !!b2bCheckoutSettings.showPONumber) {
+          checkQuotes()
+        }
         setTimeout(function () {
           cartItems.classList.remove('pointer-events-none')
         }, 500)
