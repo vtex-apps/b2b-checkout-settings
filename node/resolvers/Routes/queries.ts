@@ -16,6 +16,10 @@ export const QUERIES = {
         id
         name
       }
+      customFields {
+        name
+        value
+      }
     }
   }
   `,

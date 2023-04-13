@@ -220,6 +220,7 @@ export default {
                 getOrganizationById: {
                   paymentTerms: res?.data?.getOrganizationById?.paymentTerms,
                   status: res?.data?.getOrganizationById?.status,
+                  customFields: res?.data?.getOrganizationById?.customFields,
                 },
               },
             }
@@ -239,6 +240,10 @@ export default {
 
         if (!settings.paymentTerms && getOrganizationById?.paymentTerms) {
           settings.paymentTerms = getOrganizationById.paymentTerms
+        }
+
+        if (!settings.customFields && getOrganizationById?.customFields) {
+          settings.customFields = getOrganizationById.customFields
         }
 
         // if organization status is "on-hold" or "inactive", remove "can-checkout" permission
