@@ -313,9 +313,9 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       window.vtexjs &&
       window.vtexjs.checkout &&
       window.vtexjs.checkout.orderForm &&
-      window.vtexjs.checkout.orderForm.marketingData &&
-      (!window.vtexjs.checkout.orderForm.marketingData.utmCampaign ||
-        !window.vtexjs.checkout.orderForm.marketingData.utmMedium)
+      (!window.vtexjs.checkout.orderForm.marketingData ||
+        (!window.vtexjs.checkout.orderForm.marketingData.utmCampaign ||
+          !window.vtexjs.checkout.orderForm.marketingData.utmMedium))
     ) {
       applyMarketingData(settings.organizationId, settings.costCenterId)
     }
