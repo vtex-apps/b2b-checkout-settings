@@ -332,7 +332,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     ) {
       const { customData } = window.vtexjs.checkout.orderForm
 
-      if (customData.customApps) {
+      if (customData != null && customData.customApps) {
         const index = customData.customApps.findIndex(function (item) {
           return item.id === 'b2b-quotes-graphql'
         })
@@ -394,9 +394,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       observer.disconnect()
       observeDOM(cartItems, function () {
         cartItems.classList.add('pointer-events-none')
-        if(b2bCheckoutSettings && !!b2bCheckoutSettings.showPONumber) {
-          checkQuotes()
-        }
+        checkQuotes()
         setTimeout(function () {
           cartItems.classList.remove('pointer-events-none')
         }, 500)
