@@ -332,16 +332,18 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     ) {
       const { customData } = window.vtexjs.checkout.orderForm
 
-      if (customData.customApps) {
+      if (customData != null && customData.customApps) {
         const index = customData.customApps.findIndex(function (item) {
           return item.id === 'b2b-quotes-graphql'
         })
 
-        const { quoteId } = customData.customApps[index].fields
+        if(index !== -1) {
+          const quoteId = customData.customApps[index].fields.quoteId;
 
-        if (index !== -1 && quoteId && parseInt(quoteId, 10) !== 0) {
-          buildClearCartButton()
-          lockFields()
+          if (quoteId && parseInt(quoteId, 10) !== 0) {
+            buildClearCartButton()
+            lockFields()
+          }
         }
       }
     }
