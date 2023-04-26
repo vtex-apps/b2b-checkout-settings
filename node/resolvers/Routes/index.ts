@@ -225,7 +225,7 @@ export default {
           )
           .then((res: any) => {
             const { customFields, status, paymentTerms } =
-              res?.data?.getOrganizationById
+              res?.data?.getOrganizationById ?? {}
 
             return {
               data: {
