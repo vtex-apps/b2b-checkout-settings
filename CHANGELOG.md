@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.7.0] - 2023-04-26
+
 ### Added
 
 - Added cost center custom field to the settings backend
