@@ -29,6 +29,10 @@ export const QUERIES = {
         id
         name
       }
+      customFields {
+        name
+        value
+      }
       addresses {
         addressId
         addressType
