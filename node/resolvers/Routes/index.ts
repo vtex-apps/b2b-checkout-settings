@@ -162,7 +162,7 @@ export default {
           )
           .then((res: any) => {
             const { addresses, paymentTerms, customFields } =
-              res?.data?.getCostCenterById
+              res?.data?.getCostCenterById ?? {}
 
             return {
               data: {
