@@ -161,11 +161,15 @@ export default {
             }
           )
           .then((res: any) => {
+            const { addresses, paymentTerms, customFields } =
+              res?.data?.getCostCenterById ?? {}
+
             return {
               data: {
                 getCostCenterById: {
-                  addresses: res?.data?.getCostCenterById?.addresses,
-                  paymentTerms: res?.data?.getCostCenterById?.paymentTerms,
+                  addresses,
+                  customFields,
+                  paymentTerms,
                 },
               },
             }
@@ -190,6 +194,10 @@ export default {
         if (getCostCenterById?.paymentTerms) {
           settings.paymentTerms = getCostCenterById.paymentTerms
         }
+
+        if (getCostCenterById?.customFields) {
+          settings.costCenterCustomFields = getCostCenterById.customFields
+        }
       }
 
       if (
@@ -199,6 +207,7 @@ export default {
           userSession?.namespaces?.[
             'storefront-permissions'
           ]?.organization?.value
+
         const {
           data: { getOrganizationById },
         }: any = await graphQLServer
@@ -215,12 +224,15 @@ export default {
             }
           )
           .then((res: any) => {
+            const { customFields, status, paymentTerms } =
+              res?.data?.getOrganizationById ?? {}
+
             return {
               data: {
                 getOrganizationById: {
-                  paymentTerms: res?.data?.getOrganizationById?.paymentTerms,
-                  status: res?.data?.getOrganizationById?.status,
-                  customFields: res?.data?.getOrganizationById?.customFields,
+                  customFields,
+                  paymentTerms,
+                  status,
                 },
               },
             }
