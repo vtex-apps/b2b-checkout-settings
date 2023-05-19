@@ -191,7 +191,6 @@ export default {
           settings.addresses = getCostCenterById.addresses
         }
 
-
         if (getCostCenterById?.customFields) {
           settings.costCenterCustomFields = getCostCenterById.customFields
         }
