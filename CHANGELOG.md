@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add reference in addresses to the b2bCheckoutSettings object
+
 ## [1.8.0] - 2023-05-10
 ### Added
 - Add new configuration to let user create address in checkout

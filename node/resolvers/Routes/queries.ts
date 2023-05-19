@@ -47,6 +47,7 @@ export const QUERIES = {
         complement
         neighborhood
         geoCoordinates
+        reference
       }
     }
   }
