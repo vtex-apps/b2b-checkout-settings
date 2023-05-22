@@ -191,10 +191,6 @@ export default {
           settings.addresses = getCostCenterById.addresses
         }
 
-        if (getCostCenterById?.paymentTerms) {
-          settings.paymentTerms = getCostCenterById.paymentTerms
-        }
-
         if (getCostCenterById?.customFields) {
           settings.costCenterCustomFields = getCostCenterById.customFields
         }
