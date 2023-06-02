@@ -281,6 +281,17 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         }
       }, 500)
     }
+    if (step.includes('shipping')) {
+      const canEditAddress = "add-shipping";
+      const checkShipping = setInterval(function () {
+        if (
+          b2bCheckoutSettings?.permissions.includes(canEditAddress)
+        ) {
+          clearInterval(checkShipping)
+          b2bCheckoutSettings = undefined
+        }
+      }, 500)
+    }
   }
 
   const applyMarketingData = function (organizationId, costCenterId) {
