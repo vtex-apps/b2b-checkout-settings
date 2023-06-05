@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add validation to remove the b2bCheckoutSettings Object if user has permission to change address
+
 ## [1.9.1] - 2023-05-22
 
 ### Fix
