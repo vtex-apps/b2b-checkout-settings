@@ -282,7 +282,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       }, 500)
     }
     if (step.includes('shipping')) {
-      const canEditAddress = "add-shipping";
+      const canEditAddress = "add-shipping"
       const checkShipping = setInterval(function () {
         if (
           b2bCheckoutSettings?.permissions.includes(canEditAddress)
