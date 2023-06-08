@@ -282,10 +282,11 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       }, 500)
     }
     if (step.includes('shipping')) {
-      const canEditAddress = "add-shipping"
+      const canEditAddress = 'add-shipping'
       const checkShipping = setInterval(function () {
         if (
-          b2bCheckoutSettings?.permissions.includes(canEditAddress)
+          b2bCheckoutSettings &&
+          b2bCheckoutSettings.permissions.includes(canEditAddress)
         ) {
           clearInterval(checkShipping)
           b2bCheckoutSettings = undefined
@@ -325,8 +326,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       window.vtexjs.checkout &&
       window.vtexjs.checkout.orderForm &&
       (!window.vtexjs.checkout.orderForm.marketingData ||
-        (!window.vtexjs.checkout.orderForm.marketingData.utmCampaign ||
-          !window.vtexjs.checkout.orderForm.marketingData.utmMedium))
+        !window.vtexjs.checkout.orderForm.marketingData.utmCampaign ||
+        !window.vtexjs.checkout.orderForm.marketingData.utmMedium)
     ) {
       applyMarketingData(settings.organizationId, settings.costCenterId)
     }
@@ -348,8 +349,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
           return item.id === 'b2b-quotes-graphql'
         })
 
-        if(index !== -1) {
-          const quoteId = customData.customApps[index].fields.quoteId;
+        if (index !== -1) {
+          const quoteId = customData.customApps[index].fields.quoteId
 
           if (quoteId && parseInt(quoteId, 10) !== 0) {
             buildClearCartButton()
