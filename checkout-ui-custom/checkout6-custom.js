@@ -289,7 +289,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
           b2bCheckoutSettings.permissions.includes(canEditAddress)
         ) {
           clearInterval(checkShipping)
-          b2bCheckoutSettings = undefined
+          window.b2bCheckoutSettings = undefined
         }
       }, 500)
     }
