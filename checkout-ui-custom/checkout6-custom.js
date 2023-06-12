@@ -285,8 +285,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       const canEditAddress = 'add-shipping'
       const checkShipping = setInterval(function () {
         if (
-          b2bCheckoutSettings &&
-          b2bCheckoutSettings.permissions.includes(canEditAddress) &&
+          (b2bCheckoutSettings &&
+            b2bCheckoutSettings.permissions.includes(canEditAddress)) ||
           !window.vtexjs.checkout.orderForm.loggedIn
         ) {
           clearInterval(checkShipping)
