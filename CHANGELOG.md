@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+- Destroy checkout object if user is not logged in
+
 ## [1.9.2] - 2023-06-08
 
 ### Added

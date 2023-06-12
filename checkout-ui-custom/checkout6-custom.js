@@ -283,10 +283,17 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     }
     if (step.includes('shipping')) {
       const canEditAddress = 'add-shipping'
+      const isLoggedIn =
+        window.vtexjs &&
+        window.vtexjs.checkout &&
+        window.vtexjs.checkout.orderForm &&
+        window.vtexjs.checkout.orderForm.loggedIn
+
       const checkShipping = setInterval(function () {
         if (
-          b2bCheckoutSettings &&
-          b2bCheckoutSettings.permissions.includes(canEditAddress)
+          !isLoggedIn ||
+          (b2bCheckoutSettings &&
+            b2bCheckoutSettings.permissions.includes(canEditAddress))
         ) {
           clearInterval(checkShipping)
           window.b2bCheckoutSettings = undefined
