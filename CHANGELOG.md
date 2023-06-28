@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.9.3] - 2023-06-12
 
 ### Fix
+- Set settings back in payment step if don't exist
+
+### Fix
 - Destroy checkout object if user is not logged in
 
 ## [1.9.2] - 2023-06-08
