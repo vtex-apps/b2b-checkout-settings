@@ -300,6 +300,9 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         }
       }, 500)
     }
+    if (step.includes('payment') && b2bCheckoutSettings == undefined) {
+      b2bCheckoutSettings = settings
+    }
   }
 
   const applyMarketingData = function (organizationId, costCenterId) {
