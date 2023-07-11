@@ -194,6 +194,10 @@ export default {
         if (getCostCenterById?.customFields) {
           settings.costCenterCustomFields = getCostCenterById.customFields
         }
+
+        if (getCostCenterById?.paymentTerms.length > 0) {
+          settings.paymentTerms = getCostCenterById.paymentTerms
+        }
       }
 
       if (
