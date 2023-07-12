@@ -2,7 +2,7 @@
   "name": "vtex.b2b-organizations",
   "version": "1.9.5",
   "dependencies": {
-    "@vtex/api": "6.45.15",
+    "@vtex/api": "6.45.18",
     "atob": "^2.1.2",
     "co-body": "^6.0.0",
     "graphql": "^14.5.0",
@@ -12,17 +12,21 @@
     "ramda": "^0.25.0"
   },
   "devDependencies": {
+    "@ngneat/falso": "^6.4.0",
     "@types/atob": "^2.1.2",
     "@types/bluebird": "^3.5.25",
     "@types/co-body": "0.0.3",
     "@types/graphql": "^14.5.0",
-    "@types/jest": "^27.0.2",
+    "@types/jest": "27.4.1",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/node": "^12.0.0",
+    "@types/node": "^12.12.21",
     "@types/ramda": "types/npm-ramda#dist",
-    "@vtex/api": "6.45.15",
+    "@vtex/api": "6.45.18",
     "@vtex/prettier-config": "^0.3.1",
     "@vtex/tsconfig": "^0.6.0",
+    "jest": "27.5.1",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.9.1",
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-vtex": "^2.1.0",
@@ -32,6 +36,7 @@
     "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.0/public/@types/vtex.styleguide"
   },
   "scripts": {
-    "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'"
+    "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'",
+    "test": "jest"
   }
 }

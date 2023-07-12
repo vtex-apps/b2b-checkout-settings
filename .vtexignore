@@ -11,3 +11,5 @@ src/
 .gitignore
 gulpfile.js
 tsconfig.json
+**/*.test.*
+**/*.mock.*

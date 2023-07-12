@@ -55,7 +55,7 @@ const AppSettings: FC = () => {
         })
         setSettingsLoading(false)
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err)
         showToast({
           message: formatMessage({
