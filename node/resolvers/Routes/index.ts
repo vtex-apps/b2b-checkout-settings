@@ -25,7 +25,7 @@ export default {
     } else {
       const accountSettings: any = await vbase
         .getJSON(VBASE_BUCKET, VBASE_SETTINGS_FILE, true)
-        .catch(error => {
+        .catch((error) => {
           logger.error({
             message: 'settings-getJSON-error',
             error,
@@ -35,7 +35,7 @@ export default {
       if (accountSettings?.showPONumber && !accountSettings?.hasPONumber) {
         const checkoutConfig: any = await checkout
           .getOrderFormConfiguration()
-          .catch(error => {
+          .catch((error) => {
             logger.error({
               message: 'settings-getOrderformConfiguration-error',
               error,
@@ -59,7 +59,7 @@ export default {
           const setCheckoutConfig: any = await checkout
             .setOrderFormConfiguration(checkoutConfig, ctx.vtex.authToken)
             .then(() => true)
-            .catch(error => {
+            .catch((error) => {
               accountSettings.hasPONumber = false
 
               logger.error({
@@ -73,7 +73,7 @@ export default {
           if (setCheckoutConfig) {
             await vbase
               .saveJSON(VBASE_BUCKET, VBASE_SETTINGS_FILE, accountSettings)
-              .catch(error => {
+              .catch((error) => {
                 logger.error({
                   message: 'settings-saveJSON-error',
                   error,
@@ -119,7 +119,7 @@ export default {
         .then((currentSession: any) => {
           return currentSession.sessionData
         })
-        .catch(error => {
+        .catch((error) => {
           logger.error({
             message: 'getSession-error',
             error,
