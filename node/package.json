@@ -1,6 +1,6 @@
 {
   "name": "vtex.b2b-organizations",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "dependencies": {
     "@vtex/api": "6.45.18",
     "atob": "^2.1.2",
