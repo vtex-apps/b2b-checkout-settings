@@ -1,4 +1,5 @@
 import { randUuid } from '@ngneat/falso'
+import type { PaymentTerm } from 'vtex.b2b-organizations-graphql'
 
 import index from './index'
 
@@ -6,6 +7,10 @@ const costCenterPaymentTerms = 'costCenterPaymentTerms'
 const organizationPaymentTerms = 'organizationPaymentTerms'
 
 const graphQLQuery = jest.fn()
+
+interface ResponseBody {
+  paymentTerms: PaymentTerm[]
+}
 
 const mockContext = () => {
   return {
@@ -52,7 +57,7 @@ const mockContext = () => {
         getJSON: jest.fn().mockResolvedValueOnce({}),
       },
     },
-    response: {},
+    response: {} as Response,
     set: jest.fn(),
     vtex: {
       logger: jest.fn(),
@@ -75,14 +80,14 @@ describe('given Routes to call b2b checkout settings', () => {
 
       expect(response.status).toEqual(200)
       expect(
-        (response.body as any)?.paymentTerms.some(
-          (item: any) => item.id === costCenterPaymentTerms
+        (response.body as ResponseBody)?.paymentTerms.some(
+          (item: PaymentTerm) => item.id === costCenterPaymentTerms
         )
       ).toBeTruthy()
 
       expect(
-        (response.body as any)?.paymentTerms.some(
-          (item: any) => item.id === organizationPaymentTerms
+        (response.body as ResponseBody)?.paymentTerms.some(
+          (item: PaymentTerm) => item.id === organizationPaymentTerms
         )
       ).toBeFalsy()
     })
@@ -119,14 +124,14 @@ describe('given Routes to call b2b checkout settings', () => {
 
       expect(response.status).toEqual(200)
       expect(
-        (response.body as any)?.paymentTerms.some(
-          (item: any) => item.id === costCenterPaymentTerms
+        (response.body as ResponseBody)?.paymentTerms.some(
+          (item: PaymentTerm) => item.id === costCenterPaymentTerms
         )
       ).toBeFalsy()
 
       expect(
-        (response.body as any)?.paymentTerms.some(
-          (item: any) => item.id === organizationPaymentTerms
+        (response.body as ResponseBody)?.paymentTerms.some(
+          (item: PaymentTerm) => item.id === organizationPaymentTerms
         )
       ).toBeTruthy()
     })
