@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B kassa-instellingen",
-  "admin/b2bCheckoutSettings.saveSettings.success": "Instellingen opgeslagen",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "Instellingen opslaan is mislukt. Zie console voor details.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B kassa-instellingen",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Toon inkooporder (PO) nummerveld",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Schakelt het IO-nummerveld in op de afrekenpagina",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Knop 'Maak een offerte aan' weergeven",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Schakelt de knop 'Maak een offerte aan' in de kassa in - alleen als B2B offertes (vtex.b2b-quotes) zijn geïnstalleerd!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Opslaan"
+  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
+  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
 }
