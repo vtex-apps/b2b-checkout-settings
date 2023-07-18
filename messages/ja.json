@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
+  "admin/b2bCheckoutSettings.navigation.title": "B2B チェックアウト設定",
+  "admin/b2bCheckoutSettings.saveSettings.success": "設定を保存しました",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "設定を保存できませんでした。詳細はコンソールを確認してください。",
+  "admin/b2bCheckoutSettings.settings.title": "B2B チェックアウト設定",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "発注書 (PO) 番号フィールドを表示する",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "チェックアウトページの PO 番号フィールドを有効にする",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "「見積もり作成」ボタンを表示する",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "チェックアウトの「見積もり作成」ボタンを有効にします。これは、B2B 見積もり (vtex.b2b-quotes) がインストールされている場合に限ります！",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "保存"
 }
