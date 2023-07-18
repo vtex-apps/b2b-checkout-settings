@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
+  "admin/b2bCheckoutSettings.navigation.title": "Configuración de checkout B2B",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Configuración guardada",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "No se pudo guardar la configuración. Consulta la consola para ver los detalles.",
+  "admin/b2bCheckoutSettings.settings.title": "Configuración de checkout B2B",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Mostrar el campo «Número de la orden de compra»",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Habilita el campo «Número de la orden de compra» en la página de pago",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Mostrar el botón «Crear un presupuesto»",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Habilita el botón «Crear un presupuesto» en la compra — solo si está instalado B2B Quotes (vtex.b2b-quotes).",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Guardar"
 }
