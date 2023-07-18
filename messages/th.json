@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
+  "admin/b2bCheckoutSettings.navigation.title": "การตั้งค่า B2B Checkout",
+  "admin/b2bCheckoutSettings.saveSettings.success": "บันทึกการตั้งค่าแล้ว",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "ไม่สามารถบันทึกการตั้งค่า โปรดดูรายละเอียดในคอนโซล",
+  "admin/b2bCheckoutSettings.settings.title": "การตั้งค่า B2B Checkout",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "แสดงฟิลด์เลขที่คำสั่งซื้อ",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "เปิดใช้งานฟิลด์เลขที่คำสั่งซื้อในหน้าเช็คเอาต์",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "แสดงปุ่ม 'สร้างการเสนอราคา'",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "เปิดใช้งานปุ่ม 'สร้างการเสนอราคา' ใน Checkout เปิดใช้เมื่อติดตั้งการเสนอราคา B2B (vtex.b2b-quotes) แล้วเท่านั้น",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "บันทึก"
 }
