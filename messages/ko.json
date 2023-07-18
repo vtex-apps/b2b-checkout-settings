@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B 체크아웃 설정",
-  "admin/b2bCheckoutSettings.saveSettings.success": "설정이 저장됨",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "설정을 저장하지 못했습니다. 자세한 내용은 콘솔을 참조하세요.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B 체크아웃 설정",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "구매 주문 번호 필드 표시",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "체크아웃 페이지에서 PO 번호 필드 활성화",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "'견적 생성' 버튼 표시",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "체크아웃에서 '견적 생성' 버튼 활성화 -- B2B 견적(vtex.b2b-quotes)이 설치된 경우에만 활성화합니다!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "저장"
+  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
+  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
 }
