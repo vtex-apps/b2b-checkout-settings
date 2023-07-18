@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
+  "admin/b2bCheckoutSettings.navigation.title": "Paramètres Checkout B2B",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Paramètres enregistrés",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Impossible d'enregistrer les paramètres. Voir la console pour plus de détails.",
+  "admin/b2bCheckoutSettings.settings.title": "Paramètres Checkout B2B",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Afficher le champ numéro de bon de commande (PO)",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Active le champ du numéro de bon de commande sur la page de checkout",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Afficher le bouton « Créer un devis »",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Activer le bouton « Créer un devis » dans le checkout -- uniquement si les devis B2B (vtex.b2b-quotes) sont installés !",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Sauvegarder"
 }
