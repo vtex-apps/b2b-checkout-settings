@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
+  "admin/b2bCheckoutSettings.navigation.title": "B2B 結賬設定",
+  "admin/b2bCheckoutSettings.saveSettings.success": "設定已保存",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "保存設定失敗。查看控制台，以了解詳情。",
+  "admin/b2bCheckoutSettings.settings.title": "B2B 結賬設定",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "顯示採購訂單（PO）編號欄位",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "在結賬頁面上啓用 PO 編號欄位",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "顯示「創建報價」按鈕",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "僅當安裝了 B2B 報價（vtex.b2b-quotes），才啓用「結賬」上的「創建報價」按鈕！",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "保存"
 }
