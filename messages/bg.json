@@ -1,11 +1,11 @@
 {
-  "admin/b2bCheckoutSettings.navigation.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.saveSettings.success": "Settings saved",
-  "admin/b2bCheckoutSettings.saveSettings.failure": "Failed to save settings. See console for details.",
-  "admin/b2bCheckoutSettings.settings.title": "B2B Checkout Settings",
-  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Show purchase order (PO) number field",
-  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Enables the PO number field on the checkout page",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Show 'Create a Quote' button",
-  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Enables the 'Create a Quote' button in Checkout — only if B2B Quotes (vtex.b2b-quotes) is installed!",
-  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Save"
+  "admin/b2bCheckoutSettings.navigation.title": "Настройки на B2B финализирането",
+  "admin/b2bCheckoutSettings.saveSettings.success": "Настройките са запазени",
+  "admin/b2bCheckoutSettings.saveSettings.failure": "Неуспешно запазване на настройките. Вижте конзолата за подробности.",
+  "admin/b2bCheckoutSettings.settings.title": "Настройки на B2B финализирането",
+  "admin/b2bCheckoutSettings.settings.showPONumber.label": "Показване на полето с номер на поръчката за покупка (ПП)",
+  "admin/b2bCheckoutSettings.settings.showPONumber.helpText": "Активира полето за номер на ПП в страницата за финализиране",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.label": "Показване на бутон „Създаване на оферта“",
+  "admin/b2bCheckoutSettings.settings.showQuoteButton.helpText": "Активира бутона „Създаване на оферта“ при финализирането — само ако са инсталирани B2B оферти (vtex.b2b-quotes)!",
+  "admin/b2bCheckoutSettings.saveSettings.buttonText": "Запазване"
 }
