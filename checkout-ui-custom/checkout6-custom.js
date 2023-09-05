@@ -444,7 +444,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         isWorkspace() ? `?v=${ts}` : ''
       }`,
     }).then(function (response) {
-      if (Object.keys(response).length === 0 || response[0] === 'User not authenticated') {
+      if (Object.keys(response).length === 0 || response.error === 'User not authenticated') {
         window.sessionStorage.removeItem('b2b-checkout-settings')
 
         return
