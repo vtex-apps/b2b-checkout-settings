@@ -443,6 +443,11 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       url: `${rootPath}/_v/private/b2b-checkout-settings/${
         isWorkspace() ? `?v=${ts}` : ''
       }`,
+      error: function(err) {
+        window.sessionStorage.removeItem('b2b-checkout-settings')
+
+        return
+      }
     }).then(function (response) {
       if (Object.keys(response).length === 0 || response.error === 'User not authenticated') {
         window.sessionStorage.removeItem('b2b-checkout-settings')

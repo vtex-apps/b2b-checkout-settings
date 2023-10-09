@@ -19,7 +19,7 @@ export default {
       ctx.response.body = {
         error: 'User not authenticated',
       }
-      ctx.response.status = 200
+      ctx.response.status = 400
 
       ctx.set('cache-control', 'no-cache')
     } else {
