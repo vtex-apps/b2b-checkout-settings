@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed issue with unauthenticated B2C users in checkout shipping step
+
 ## [1.10.1] - 2023-08-17
 ### Fixed
 - Fix conditional chain causing issue when retrieving Cost Center data
