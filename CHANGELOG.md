@@ -7,20 +7,32 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add a token to call graphql queries for the client of storefront-permission and b2b-organizations-graphql
+
 ## [1.10.1] - 2023-08-17
+
 ### Fixed
+
 - Fix conditional chain causing issue when retrieving Cost Center data
 
 ## [1.10.0] - 2023-08-04
+
 ### Fixed
+
 - Remove instore-custom files
 
 ## [1.9.6] - 2023-07-12
+
 ### Fixed
+
 - Use payment terms from the cost center when it is configured instead of the organization
 
 ## [1.9.5] - 2023-06-30
+
 ### Fixed
+
 - Added semicolon to checkout ui custom
 
 ## [1.9.4] - 2023-06-28
@@ -28,28 +40,35 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.9.3] - 2023-06-12
 
 ### Fix
+
 - Set settings back in payment step if don't exist
 
 ### Fix
+
 - Destroy checkout object if user is not logged in
 
 ## [1.9.2] - 2023-06-08
 
 ### Added
+
 - Add validation to remove the b2bCheckoutSettings Object if user has permission to change address
 
 ## [1.9.1] - 2023-05-22
 
 ### Fix
+
 - Remove validation after retrieving cost center information
 
 ## [1.9.0] - 2023-05-19
 
 ### Added
+
 - Add reference in addresses to the b2bCheckoutSettings object
 
 ## [1.8.0] - 2023-05-10
+
 ### Added
+
 - Add new configuration to let user create address in checkout
 
 ## [1.7.0] - 2023-04-26
@@ -59,20 +78,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added cost center custom field to the settings backend
 
 ## [1.6.0] - 2023-04-17
+
 ### Added
+
 - Addded customFields to the b2bCheckoutSettings object
 
 ## [1.5.1] - 2023-04-17
 
 ### Fixed
+
 - Fix issue when quotes-graphql isn't available
 
 ### Removed
+
 - [ENGINEERS-1247] - Disable cypress tests in PR level
 
 ## [1.5.0] - 2023-04-06
 
 ### Fixed
+
 - Marketing data isn't always present, so it sometimes fails when checkout.marking data is being validated
 
 ### Changed
@@ -138,7 +162,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- Fixed bug returning `User not authenticated` error for logged in users when getting `b2b-checkout-settings` in production domains
+- Fixed bug returning `User not authenticated` error for logged in users when getting `b2b-checkout-settings` in
+  production domains
 
 ## [1.3.3] - 2022-06-07
 
@@ -148,8 +173,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- Fixed bug preventing PO Number field from displaying in locales without translations. Default to English if translation for locale is not available
-- Fixed bug to set `hasPONumber` to `true` if orderForm has already been configured to accept `purchaseOrderNumber` field
+- Fixed bug preventing PO Number field from displaying in locales without translations. Default to English if
+  translation for locale is not available
+- Fixed bug to set `hasPONumber` to `true` if orderForm has already been configured to accept `purchaseOrderNumber`
+  field
 
 ## [1.3.2] - 2022-06-03
 
@@ -179,7 +206,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- If user does not have marketing data (organization and cost center IDs) set in their orderForm at time of checkout, set it
+- If user does not have marketing data (organization and cost center IDs) set in their orderForm at time of checkout,
+  set it
 
 ## [1.1.1] - 2022-03-25
 
@@ -244,13 +272,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Added a new feature to check if the order form has a custom data property ("b2b-quotes-graphql") from quotes and then the items in the cart will be locked by .item-disabled css class which disables the pointer events from mouse/touch.
+- Added a new feature to check if the order form has a custom data property ("b2b-quotes-graphql") from quotes and then
+  the items in the cart will be locked by .item-disabled css class which disables the pointer events from mouse/touch.
 
 ## [0.6.3] - 2022-02-04
 
 ### Fixed
 
-- Correct payment methods will be displayed regardless of whether payment terms are shown as tabs or accordions, and regardless of whether this app's checkout JS runs before or after checkout-ui-custom's
+- Correct payment methods will be displayed regardless of whether payment terms are shown as tabs or accordions, and
+  regardless of whether this app's checkout JS runs before or after checkout-ui-custom's
 
 ## [0.6.2] - 2022-01-26
 
@@ -313,4 +343,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- Add a semicolon at end of checkou6-custom.js to not break functionalities from `checkout ui custom` when using webpack together
+- Add a semicolon at end of checkou6-custom.js to not break functionalities from `checkout ui custom` when using webpack
+  together
