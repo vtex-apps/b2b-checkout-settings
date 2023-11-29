@@ -1,12 +1,17 @@
-import { VBASE_BUCKET, VBASE_SETTINGS_FILE, DEFAULTS } from '../constants'
-import { QUERIES } from './queries'
+import { DEFAULTS, VBASE_BUCKET, VBASE_SETTINGS_FILE } from '../constants'
 
 const CACHE = 180
 
 export default {
   settings: async (ctx: Context) => {
     const {
-      clients: { graphQLServer, checkout, session, vbase },
+      clients: {
+        organizations,
+        storefrontPermissions,
+        checkout,
+        session,
+        vbase,
+      },
       vtex: { host, logger, storeUserAuthToken, production },
     } = ctx
 
@@ -85,17 +90,8 @@ export default {
 
       const {
         data: { checkUserPermission },
-      }: any = await graphQLServer
-        .query(
-          QUERIES.getPermission,
-          {},
-          {
-            persistedQuery: {
-              provider: 'vtex.storefront-permissions@1.x',
-              sender: 'vtex.b2b-checkout-settings@1.x',
-            },
-          }
-        )
+      }: any = await storefrontPermissions
+        .checkUserPermission()
         .catch((error: any) => {
           logger.error({
             message: 'checkUserPermission-error',
@@ -147,19 +143,8 @@ export default {
           userSession?.namespaces?.['storefront-permissions']?.costcenter?.value
         const {
           data: { getCostCenterById },
-        }: any = await graphQLServer
-          .query(
-            QUERIES.getAddresses,
-            {
-              id: settings.costCenterId,
-            },
-            {
-              persistedQuery: {
-                provider: 'vtex.b2b-organizations-graphql@0.x',
-                sender: 'vtex.b2b-checkout-settings@1.x',
-              },
-            }
-          )
+        }: any = await organizations
+          .getAddresses(settings.costCenterId)
           .then((res: any) => {
             const { addresses, paymentTerms, customFields } =
               res?.data?.getCostCenterById ?? {}
@@ -210,19 +195,8 @@ export default {
 
         const {
           data: { getOrganizationById },
-        }: any = await graphQLServer
-          .query(
-            QUERIES.getOrganizationDetails,
-            {
-              id: settings.organizationId,
-            },
-            {
-              persistedQuery: {
-                provider: 'vtex.b2b-organizations-graphql@0.x',
-                sender: 'vtex.b2b-checkout-settings@1.x',
-              },
-            }
-          )
+        }: any = await organizations
+          .getOrganization(settings.organizationId)
           .then((res: any) => {
             const { customFields, status, paymentTerms } =
               res?.data?.getOrganizationById ?? {}

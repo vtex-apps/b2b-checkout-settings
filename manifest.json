@@ -32,7 +32,10 @@
       }
     },
     {
-      "name": "vtex.graphql-server:resolve-graphql"
+      "name": "vtex.storefront-permissions:resolve-graphql"
+    },
+    {
+      "name": "vtex.b2b-organizations-graphql:resolve-graphql"
     },
     {
       "name": "vbase-read-write"

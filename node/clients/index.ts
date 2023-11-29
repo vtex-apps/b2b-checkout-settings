@@ -1,13 +1,19 @@
+import type { IOContext } from '@vtex/api'
 import { IOClients } from '@vtex/api'
 
-import { GraphQLServer } from './graphqlServer'
-import { Checkout } from './Checkout'
 import { AuthUser } from './AuthUser'
+import { Checkout } from './Checkout'
+import { OrganizationsGraphQLClient } from './Organizations'
+import StorefrontPermissions from './StorefrontPermissions'
 
 // Extend the default IOClients implementation with our own custom clients.
 export class Clients extends IOClients {
-  public get graphQLServer() {
-    return this.getOrSet('graphQLServer', GraphQLServer)
+  public get storefrontPermissions() {
+    return this.getOrSet('storefrontPermissions', StorefrontPermissions)
+  }
+
+  public get organizations() {
+    return this.getOrSet('organizations', OrganizationsGraphQLClient)
   }
 
   public get checkout() {
@@ -16,5 +22,11 @@ export class Clients extends IOClients {
 
   public get authUser() {
     return this.getOrSet('authUser', AuthUser)
+  }
+}
+
+export const createHeaderWithToken = (ctx: IOContext) => {
+  return {
+    VtexIdclientAutCookie: ctx.storeUserAuthToken ?? ctx.adminUserAuthToken,
   }
 }
