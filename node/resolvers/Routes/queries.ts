@@ -1,6 +1,6 @@
 export const QUERIES = {
   getPermission: `query permissions {
-    checkUserPermission @context(provider: "vtex.storefront-permissions"){
+    checkUserPermission {
       role {
         id
         name
