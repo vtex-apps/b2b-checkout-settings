@@ -30,9 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use payment terms from the cost center when it is configured instead of the organization
 
 ## [1.9.5] - 2023-06-30
-
 ### Fixed
-
 - Added semicolon to checkout ui custom
 
 ## [1.9.4] - 2023-06-28
@@ -40,35 +38,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.9.3] - 2023-06-12
 
 ### Fix
-
 - Set settings back in payment step if don't exist
 
 ### Fix
-
 - Destroy checkout object if user is not logged in
 
 ## [1.9.2] - 2023-06-08
 
 ### Added
-
 - Add validation to remove the b2bCheckoutSettings Object if user has permission to change address
 
 ## [1.9.1] - 2023-05-22
 
 ### Fix
-
 - Remove validation after retrieving cost center information
 
 ## [1.9.0] - 2023-05-19
 
 ### Added
-
 - Add reference in addresses to the b2bCheckoutSettings object
 
 ## [1.8.0] - 2023-05-10
-
 ### Added
-
 - Add new configuration to let user create address in checkout
 
 ## [1.7.0] - 2023-04-26
@@ -78,25 +69,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added cost center custom field to the settings backend
 
 ## [1.6.0] - 2023-04-17
-
 ### Added
-
 - Addded customFields to the b2bCheckoutSettings object
 
 ## [1.5.1] - 2023-04-17
 
 ### Fixed
-
 - Fix issue when quotes-graphql isn't available
 
 ### Removed
-
 - [ENGINEERS-1247] - Disable cypress tests in PR level
 
 ## [1.5.0] - 2023-04-06
 
 ### Fixed
-
 - Marketing data isn't always present, so it sometimes fails when checkout.marking data is being validated
 
 ### Changed
