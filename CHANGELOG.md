@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add a token to call graphql queries for the client of storefront-permission and b2b-organizations-graphql
+
 ## [1.10.1] - 2023-08-17
 ### Fixed
 - Fix conditional chain causing issue when retrieving Cost Center data

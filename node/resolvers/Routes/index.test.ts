@@ -6,36 +6,37 @@ import index from './index'
 const costCenterPaymentTerms = 'costCenterPaymentTerms'
 const organizationPaymentTerms = 'organizationPaymentTerms'
 
-const graphQLQuery = jest.fn()
-
 interface ResponseBody {
   paymentTerms: PaymentTerm[]
 }
 
+const getAddressMocked = jest.fn().mockResolvedValueOnce({
+  data: {
+    getCostCenterById: {
+      addresses: {},
+      customFields: {},
+      paymentTerms: [{ id: costCenterPaymentTerms }],
+    },
+  },
+})
+
 const mockContext = () => {
   return {
     clients: {
-      graphQLServer: {
-        query: graphQLQuery
-          .mockResolvedValueOnce({ data: {} })
-          .mockResolvedValueOnce({
-            data: {
-              getCostCenterById: {
-                addresses: {},
-                customFields: {},
-                paymentTerms: [{ id: costCenterPaymentTerms }],
-              },
+      storefrontPermissions: {
+        checkUserPermission: jest.fn().mockResolvedValueOnce({ data: {} }),
+      },
+      organizations: {
+        getAddresses: getAddressMocked,
+        getOrganization: jest.fn().mockResolvedValueOnce({
+          data: {
+            getOrganizationById: {
+              addresses: {},
+              customFields: {},
+              paymentTerms: [{ id: organizationPaymentTerms }],
             },
-          })
-          .mockResolvedValueOnce({
-            data: {
-              getOrganizationById: {
-                addresses: {},
-                customFields: {},
-                paymentTerms: [{ id: organizationPaymentTerms }],
-              },
-            },
-          }),
+          },
+        }),
       },
       session: {
         getSession: jest.fn().mockResolvedValueOnce({
@@ -67,6 +68,10 @@ const mockContext = () => {
   } as unknown as Context
 }
 
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
 describe('given Routes to call b2b checkout settings', () => {
   describe('when have the cost center and organization with payment terms', () => {
     let context: Context
@@ -96,26 +101,15 @@ describe('given Routes to call b2b checkout settings', () => {
     let context: Context
 
     beforeEach(async () => {
-      graphQLQuery
-        .mockResolvedValueOnce({ data: {} })
-        .mockResolvedValueOnce({
-          data: {
-            getCostCenterById: {
-              addresses: {},
-              customFields: {},
-              paymentTerms: [],
-            },
+      getAddressMocked.mockResolvedValueOnce({
+        data: {
+          getCostCenterById: {
+            addresses: {},
+            customFields: {},
+            paymentTerms: [],
           },
-        })
-        .mockResolvedValueOnce({
-          data: {
-            getOrganizationById: {
-              addresses: {},
-              customFields: {},
-              paymentTerms: [{ id: organizationPaymentTerms }],
-            },
-          },
-        })
+        },
+      })
       context = mockContext()
       await index.settings(context)
     })
