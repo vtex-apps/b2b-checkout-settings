@@ -25,8 +25,9 @@ export class Clients extends IOClients {
   }
 }
 
-export const createHeaderWithToken = (ctx: IOContext) => {
+export const getTokenToHeader = (ctx: IOContext) => {
   return {
-    VtexIdclientAutCookie: ctx.storeUserAuthToken ?? ctx.adminUserAuthToken,
+    VtexIdclientAutCookie:
+      ctx.storeUserAuthToken ?? ctx.adminUserAuthToken ?? ctx.authToken,
   }
 }

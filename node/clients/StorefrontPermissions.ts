@@ -3,7 +3,7 @@ import type { InstanceOptions, IOContext } from '@vtex/api'
 import { AppGraphQLClient } from '@vtex/api'
 
 import { QUERIES } from '../resolvers/Routes/queries'
-import { createHeaderWithToken } from './index'
+import { getTokenToHeader } from './index'
 
 export default class StorefrontPermissions extends AppGraphQLClient {
   constructor(ctx: IOContext, options?: InstanceOptions) {
@@ -24,7 +24,7 @@ export default class StorefrontPermissions extends AppGraphQLClient {
       },
       {
         params: {
-          headers: createHeaderWithToken(this.context),
+          headers: getTokenToHeader(this.context),
           locale: this.context.locale,
         },
       }

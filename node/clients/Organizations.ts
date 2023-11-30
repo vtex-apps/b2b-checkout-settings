@@ -3,7 +3,7 @@ import type { InstanceOptions, IOContext } from '@vtex/api'
 import { AppGraphQLClient } from '@vtex/api'
 
 import { QUERIES } from '../resolvers/Routes/queries'
-import { createHeaderWithToken } from './index'
+import { getTokenToHeader } from './index'
 
 export class OrganizationsGraphQLClient extends AppGraphQLClient {
   constructor(ctx: IOContext, options?: InstanceOptions) {
@@ -25,7 +25,10 @@ export class OrganizationsGraphQLClient extends AppGraphQLClient {
         },
       },
       {
-        headers: createHeaderWithToken(this.context),
+        params: {
+          headers: getTokenToHeader(this.context),
+          locale: this.context.locale,
+        },
       }
     )
   }
@@ -45,7 +48,10 @@ export class OrganizationsGraphQLClient extends AppGraphQLClient {
         },
       },
       {
-        headers: createHeaderWithToken(this.context),
+        params: {
+          headers: getTokenToHeader(this.context),
+          locale: this.context.locale,
+        },
       }
     )
   }
