@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.11.0] - 2023-11-30
+
 ### Added
 
 - Add a token to call graphql queries for the client of storefront-permission and b2b-organizations-graphql
