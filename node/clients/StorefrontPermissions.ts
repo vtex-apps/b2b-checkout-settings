@@ -16,7 +16,7 @@ export default class StorefrontPermissions extends AppGraphQLClient {
         extensions: {
           persistedQuery: {
             provider: 'vtex.storefront-permissions@1.x',
-            sender: 'vtex.b2b-organizations@0.x',
+            sender: 'vtex.b2b-checkout-settings@1.x',
           },
         },
         query: QUERIES.getPermission,

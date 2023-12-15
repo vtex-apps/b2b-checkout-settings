@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Adjust sender app name and token to call check user permission
+
 ## [1.11.0] - 2023-11-30
 
 ### Added
