@@ -472,7 +472,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 
   // Wait until it have the vtex runtime to call the functions
   checkVtex = setInterval(function () {
-    if (window.vtex !== undefined && window.vtex.renderRuntime !== undefined) {
+    if (window.vtex !== undefined && window.vtex.renderRuntime !== undefined && window.vtexjs?.checkout?.orderForm !== undefined) {
       clearInterval(checkVtex)
       if (isWorkspace() || !settings) {
         fetchSettings()
