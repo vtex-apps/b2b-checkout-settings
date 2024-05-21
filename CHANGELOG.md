@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Add catalog-info.yaml
+
 ## [1.11.1] - 2023-12-15
 
 ### Fixed
