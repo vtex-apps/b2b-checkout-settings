@@ -23,8 +23,8 @@ export default class StorefrontPermissions extends AppGraphQLClient {
         variables: {},
       },
       {
+        headers: getTokenToHeader(this.context),
         params: {
-          headers: getTokenToHeader(this.context),
           locale: this.context.locale,
         },
       }
