@@ -9,8 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- Add catalog-info.yaml
 - Provide correct tokens to clients
+
+### Fixed
+
+- Add catalog-info.yaml
 
 ## [1.11.1] - 2023-12-15
 
