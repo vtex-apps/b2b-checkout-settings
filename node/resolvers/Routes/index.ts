@@ -224,9 +224,14 @@ export default {
             }
           })
 
-        if (!settings.paymentTerms && getOrganizationById?.paymentTerms) {
-          settings.paymentTerms = getOrganizationById.paymentTerms
-        }
+          if (settings.paymentTerms && getOrganizationById?.paymentTerms) {
+            const intersection = settings.paymentTerms.filter((obj: any) => getOrganizationById.paymentTerms.some((obj2: any) => obj.id === obj2.id && obj.name === obj2.name));
+            settings.paymentTerms = intersection
+          }
+
+          if (!settings.paymentTerms && getOrganizationById?.paymentTerms) {
+            settings.paymentTerms = getOrganizationById.paymentTerms
+          }
 
         if (!settings.customFields && getOrganizationById?.customFields) {
           settings.customFields = getOrganizationById.customFields
