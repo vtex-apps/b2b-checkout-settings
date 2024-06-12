@@ -25,8 +25,8 @@ export class OrganizationsGraphQLClient extends AppGraphQLClient {
         },
       },
       {
+        headers: getTokenToHeader(this.context),
         params: {
-          headers: getTokenToHeader(this.context),
           locale: this.context.locale,
         },
       }
@@ -48,8 +48,8 @@ export class OrganizationsGraphQLClient extends AppGraphQLClient {
         },
       },
       {
+        headers: getTokenToHeader(this.context),
         params: {
-          headers: getTokenToHeader(this.context),
           locale: this.context.locale,
         },
       }
