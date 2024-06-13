@@ -224,8 +224,9 @@ export default {
             }
           })
 
+          // fix to only show the payment terms that are in common between the organization and the cost center
           if (settings.paymentTerms && getOrganizationById?.paymentTerms) {
-            const intersection = settings.paymentTerms.filter((obj: any) => getOrganizationById.paymentTerms.some((obj2: any) => obj.id === obj2.id && obj.name === obj2.name));
+            const intersection = settings.paymentTerms.filter((ccPaymentTerms: any) => getOrganizationById.paymentTerms.some((orgPaymentTerms: any) => ccPaymentTerms.id === orgPaymentTerms.id && ccPaymentTerms.name === orgPaymentTerms.name));
             settings.paymentTerms = intersection
           }
 
