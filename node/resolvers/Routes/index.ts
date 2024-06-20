@@ -224,9 +224,15 @@ export default {
             }
           })
 
-        if (!settings.paymentTerms && getOrganizationById?.paymentTerms) {
-          settings.paymentTerms = getOrganizationById.paymentTerms
-        }
+          // fix to only show the payment terms that are in common between the organization and the cost center
+          if (settings.paymentTerms && getOrganizationById?.paymentTerms) {
+            const intersection = settings.paymentTerms.filter((ccPaymentTerms: any) => getOrganizationById.paymentTerms.some((orgPaymentTerms: any) => ccPaymentTerms.id === orgPaymentTerms.id && ccPaymentTerms.name === orgPaymentTerms.name));
+            settings.paymentTerms = intersection
+          }
+
+          if (!settings.paymentTerms && getOrganizationById?.paymentTerms) {
+            settings.paymentTerms = getOrganizationById.paymentTerms
+          }
 
         if (!settings.customFields && getOrganizationById?.customFields) {
           settings.customFields = getOrganizationById.customFields
