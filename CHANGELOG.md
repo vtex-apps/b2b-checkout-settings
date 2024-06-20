@@ -17,8 +17,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Adjust payment terms on cost center
 
-## [1.11.2] - 2024-06-13
-
 ### Fixed
 
 - Add catalog-info.yaml
