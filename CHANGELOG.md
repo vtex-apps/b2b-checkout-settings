@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- Adjust payment terms on cost center
+
+### Fixed
+
 - Provide correct tokens to clients
 
 ### Fixed
