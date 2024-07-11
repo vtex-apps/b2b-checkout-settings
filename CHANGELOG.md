@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.11.2] - 2024-06-12
-
 ### Fixed
 
 - Adjust payment terms on cost center
+
+## [1.11.2] - 2024-06-12
 
 ### Fixed
 
