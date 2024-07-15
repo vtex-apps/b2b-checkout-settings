@@ -1,3 +1,5 @@
+import type { PaymentTerm } from 'vtex.b2b-organizations-graphql'
+
 import { DEFAULTS, VBASE_BUCKET, VBASE_SETTINGS_FILE } from '../constants'
 
 const CACHE = 180
@@ -223,6 +225,20 @@ export default {
               },
             }
           })
+
+        // fix to only show the payment terms that are in common between the organization and the cost center
+        if (settings.paymentTerms && getOrganizationById?.paymentTerms) {
+          const intersection = settings.paymentTerms.filter(
+            (ccPaymentTerms: PaymentTerm) =>
+              getOrganizationById.paymentTerms.some(
+                (orgPaymentTerms: PaymentTerm) =>
+                  ccPaymentTerms.id === orgPaymentTerms.id &&
+                  ccPaymentTerms.name === orgPaymentTerms.name
+              )
+          )
+
+          settings.paymentTerms = intersection
+        }
 
         if (!settings.paymentTerms && getOrganizationById?.paymentTerms) {
           settings.paymentTerms = getOrganizationById.paymentTerms
