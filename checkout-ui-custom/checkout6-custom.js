@@ -281,28 +281,6 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         }
       }, 500)
     }
-    if (step.includes('shipping')) {
-      const canEditAddress = 'add-shipping'
-      const isLoggedIn =
-        window.vtexjs &&
-        window.vtexjs.checkout &&
-        window.vtexjs.checkout.orderForm &&
-        window.vtexjs.checkout.orderForm.loggedIn
-
-      const checkShipping = setInterval(function () {
-        if (
-          !isLoggedIn ||
-          (b2bCheckoutSettings &&
-            b2bCheckoutSettings.permissions.includes(canEditAddress))
-        ) {
-          clearInterval(checkShipping)
-          window.b2bCheckoutSettings = undefined
-        }
-      }, 500)
-    }
-    if (step.includes('payment') && b2bCheckoutSettings == undefined) {
-      b2bCheckoutSettings = settings
-    }
   }
 
   const applyMarketingData = function (organizationId, costCenterId) {
