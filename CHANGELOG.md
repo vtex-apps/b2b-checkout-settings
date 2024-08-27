@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Removed
+
+- Shipping conditional that erases `b2bCheckoutSettings`; Not necessary with new version of omnishipping
+
 ## [1.11.3] - 2024-07-15
 
 ### Fixed
