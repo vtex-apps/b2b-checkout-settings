@@ -158,8 +158,9 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     wrap.prepend(`
     <div class="b2b-purchase-order-number">
     <p class="b2b-purchase-order-number-label">
-    <label for="cart-b2b-purchase-order-number">${getTranslation().cartPurchaseOrderLabel
-      }</label>
+    <label for="cart-b2b-purchase-order-number">${
+      getTranslation().cartPurchaseOrderLabel
+    }</label>
     </p>
     <input class="input-small b2b-purchase-order-number-input" type="text" id="cart-b2b-purchase-order-number" value="${currValue}">
     </div>
@@ -188,7 +189,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
             app: 'b2b-quotes-graphql',
             field: 'quoteId',
           })
-          .then(function () { })
+          .then(function () {})
       })
     }
   }
@@ -316,7 +317,6 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   }
 
   const handleSettings = function () {
-
     if (!settings) return
 
     if (settings.showPONumber === true) {
@@ -444,8 +444,9 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     const ts = new Date().getTime()
 
     $.ajax({
-      url: `${rootPath}/_v/private/b2b-checkout-settings/${isWorkspace() ? `?v=${ts}` : ''
-        }`,
+      url: `${rootPath}/_v/private/b2b-checkout-settings/${
+        isWorkspace() ? `?v=${ts}` : ''
+      }`,
     }).then(function (response) {
       if (Object.keys(response).length === 0) {
         window.sessionStorage.removeItem('b2b-checkout-settings')
@@ -506,4 +507,4 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   }
 
   $(window).on('hashchange', () => initialize())
-})();
+})()
