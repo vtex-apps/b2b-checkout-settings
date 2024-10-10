@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.12.2] - 2024-10-10
+
 ### Added
 
 - Displays the create quota button according to the value of the create quota permission 
