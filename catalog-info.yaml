@@ -4,8 +4,10 @@ metadata:
   name: b2b-checkout-settings
   annotations:
     github.com/project-slug: vtex-apps/b2b-checkout-settings
+    backstage.io/techdocs-ref: dir:./
+    vtex.com/application-id: P9VK52GG
 spec:
   system: b2b-suite
   type: frontend-ui
   lifecycle: maintenance
-  owner: b-2-b-enabler
+  owner: te-0010

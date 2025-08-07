@@ -15,10 +15,47 @@ const getAddressMocked = jest.fn().mockResolvedValueOnce({
     getCostCenterById: {
       addresses: {},
       customFields: {},
-      paymentTerms: [{ id: costCenterPaymentTerms }],
+      paymentTerms: [
+        { id: costCenterPaymentTerms, name: costCenterPaymentTerms },
+      ],
     },
   },
 })
+
+const getOrganizationMocked = jest
+  .fn()
+  .mockImplementationOnce(() =>
+    Promise.resolve({
+      data: {
+        getOrganizationById: {
+          addresses: {},
+          customFields: {},
+          paymentTerms: [
+            {
+              id: costCenterPaymentTerms,
+              name: costCenterPaymentTerms,
+            },
+          ],
+        },
+      },
+    })
+  )
+  .mockImplementationOnce(() =>
+    Promise.resolve({
+      data: {
+        getOrganizationById: {
+          addresses: {},
+          customFields: {},
+          paymentTerms: [
+            {
+              id: organizationPaymentTerms,
+              name: organizationPaymentTerms,
+            },
+          ],
+        },
+      },
+    })
+  )
 
 const mockContext = () => {
   return {
@@ -28,15 +65,7 @@ const mockContext = () => {
       },
       organizations: {
         getAddresses: getAddressMocked,
-        getOrganization: jest.fn().mockResolvedValueOnce({
-          data: {
-            getOrganizationById: {
-              addresses: {},
-              customFields: {},
-              paymentTerms: [{ id: organizationPaymentTerms }],
-            },
-          },
-        }),
+        getOrganization: getOrganizationMocked,
       },
       session: {
         getSession: jest.fn().mockResolvedValueOnce({
@@ -80,6 +109,7 @@ describe('given Routes to call b2b checkout settings', () => {
       context = mockContext()
       await index.settings(context)
     })
+
     it('should return payments terms from cost center', () => {
       const { response } = context
 
@@ -97,6 +127,7 @@ describe('given Routes to call b2b checkout settings', () => {
       ).toBeFalsy()
     })
   })
+
   describe('when have just the organization with payment terms', () => {
     let context: Context
 
@@ -110,9 +141,11 @@ describe('given Routes to call b2b checkout settings', () => {
           },
         },
       })
+
       context = mockContext()
       await index.settings(context)
     })
+
     it('should return payments terms from organization', () => {
       const { response } = context
 

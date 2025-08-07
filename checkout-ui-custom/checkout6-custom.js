@@ -338,7 +338,11 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       applyPermissions(settings.permissions)
     }
 
-    if (settings.showQuoteButton) {
+    const createQuotePermission = JSON.parse(
+      window.sessionStorage.getItem('checkout.createQuote')
+    )
+
+    if (settings.showQuoteButton && createQuotePermission) {
       buildCreateQuoteButton()
     }
 
@@ -535,4 +539,4 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   })
 
   $(window).on('hashchange', () => initialize())
-})();
+})()

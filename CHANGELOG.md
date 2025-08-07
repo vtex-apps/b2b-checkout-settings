@@ -7,6 +7,55 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.0.0] - 2025-05-27
+
+### Changed
+- Update dependency major version. If you are updating to this major version, make sure to update the following apps (if you have then installed) to the following major versions:
+    - vtex.b2b-admin-customers@1.x
+    - vtex.b2b-my-account@1.x
+    - vtex.b2b-orders-history@1.x
+    - vtex.b2b-organizations@2.x
+    - vtex.b2b-organizations-graphql@1.x
+    - vtex.b2b-quotes@2.x
+    - vtex.b2b-quotes-graphql@3.x
+    - vtex.b2b-suite@1.x
+    - vtex.b2b-theme@4.x
+    - vtex.storefront-permissions@2.x
+    - vtex.storefront-permissions-components@1.x
+    - vtex.storefront-permissions-ui@2.x
+
+## [1.12.3] - 2024-10-10
+
+## [1.12.2] - 2024-10-10
+
+### Added
+
+- Displays the create quota button according to the value of the create quota permission 
+
+## [1.12.1] - 2024-09-05
+
+### Fixed
+
+- Provide app token on calls to b2b-organizations-graphql app
+
+## [1.12.0] - 2024-09-04
+
+### Added
+
+- Spanish translations.
+
+## [1.11.3] - 2024-07-15
+
+### Fixed
+
+- Adjust payment terms on cost center
+
+## [1.11.2] - 2024-06-12
+
+### Fixed
+
+- Provide correct tokens to clients
+
 ### Fixed
 
 - Add catalog-info.yaml

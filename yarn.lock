@@ -1430,11 +1430,6 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-jest-when@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/jest-when/-/jest-when-3.5.2.tgz#651d8a73751ab55c29698d388dffd3460cd52bdc"
-  integrity sha512-4rDvnhaWh08RcPsoEVXgxRnUIE9wVIbZtGqZ5x2Wm9Ziz9aQs89PipQFmOK0ycbEhVAgiV3MUeTXp3Ar4s2FcQ==
-
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

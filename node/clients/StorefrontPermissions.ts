@@ -7,7 +7,7 @@ import { getTokenToHeader } from './index'
 
 export default class StorefrontPermissions extends AppGraphQLClient {
   constructor(ctx: IOContext, options?: InstanceOptions) {
-    super('vtex.storefront-permissions@1.x', ctx, options)
+    super('vtex.storefront-permissions@2.x', ctx, options)
   }
 
   public checkUserPermission = async (): Promise<any> => {
@@ -15,16 +15,16 @@ export default class StorefrontPermissions extends AppGraphQLClient {
       {
         extensions: {
           persistedQuery: {
-            provider: 'vtex.storefront-permissions@1.x',
-            sender: 'vtex.b2b-checkout-settings@1.x',
+            provider: 'vtex.storefront-permissions@2.x',
+            sender: 'vtex.b2b-checkout-settings@2.x',
           },
         },
         query: QUERIES.getPermission,
         variables: {},
       },
       {
+        headers: getTokenToHeader(this.context),
         params: {
-          headers: getTokenToHeader(this.context),
           locale: this.context.locale,
         },
       }
