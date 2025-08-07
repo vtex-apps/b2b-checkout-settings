@@ -24,7 +24,6 @@ const CREDIT_CARDS = [
 const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 
 !(function () {
-  console.log('B2B Checkout Settings')
   let checkVtex = null
 
   const getTranslation = function () {
@@ -38,6 +37,10 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
             title: 'Acesso',
             detail: 'Você não tem acesso ao checkout',
           },
+          'address-number-required': {
+            title: 'Campo obrigatório',
+            detail: 'Por favor, preencha o número do endereço',
+          },
         },
         clearCartLabel: 'Limpar carrinho',
       },
@@ -49,6 +52,10 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
             title: 'ACCESS',
             detail: "You don't have access to the checkout",
           },
+          'address-number-required': {
+            title: 'Required field',
+            detail: 'Please fill in the address number',
+          },
         },
         clearCartLabel: 'Clear Cart',
       },
@@ -59,6 +66,10 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
           'b2b-access-denied': {
             title: 'ACCESO',
             detail: 'No tienes acceso al checkout',
+          },
+          'address-number-required': {
+            title: 'Campo obligatorio',
+            detail: 'Por favor, complete el número de dirección',
           },
         },
         clearCartLabel: 'Limpiar carrito',
@@ -501,6 +512,27 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       window.sessionStorage.removeItem('message')
     }
   }
+
+  $(document).on('click', '#btn-go-to-payment', function(e) {
+    const numberInput = document.querySelector('input#ship-number')
+
+    if (numberInput && !numberInput.value?.trim()) {
+      e.preventDefault()
+      numberInput.focus()
+      numberInput.classList.add('error')
+
+      const translation = getTranslation()
+      $(window).trigger('addMessage.vtex', {
+        type: 'warning',
+        content: {
+          title: translation.messages['address-number-required'].title,
+          detail: translation.messages['address-number-required'].detail
+        }
+      })
+
+      return false
+    }
+  })
 
   $(window).on('hashchange', () => initialize())
 })();
