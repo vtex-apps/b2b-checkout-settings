@@ -7,7 +7,7 @@ import { getTokenToHeader } from './index'
 
 export class OrganizationsGraphQLClient extends AppGraphQLClient {
   constructor(ctx: IOContext, options?: InstanceOptions) {
-    super('vtex.b2b-organizations-graphql@1.x', ctx, options)
+    super('vtex.b2b-organizations-graphql@2.x', ctx, options)
   }
 
   public getAddresses = async (costCenterId: string): Promise<any> => {
@@ -15,8 +15,8 @@ export class OrganizationsGraphQLClient extends AppGraphQLClient {
       {
         extensions: {
           persistedQuery: {
-            provider: 'vtex.b2b-organizations-graphql@1.x',
-            sender: 'vtex.b2b-checkout-settings@2.x',
+            provider: 'vtex.b2b-organizations-graphql@2.x',
+            sender: 'vtex.b2b-checkout-settings@3.x',
           },
         },
         query: QUERIES.getAddresses,
@@ -38,8 +38,8 @@ export class OrganizationsGraphQLClient extends AppGraphQLClient {
       {
         extensions: {
           persistedQuery: {
-            provider: 'vtex.b2b-organizations-graphql@1.x',
-            sender: 'vtex.b2b-checkout-settings@2.x',
+            provider: 'vtex.b2b-organizations-graphql@2.x',
+            sender: 'vtex.b2b-checkout-settings@3.x',
           },
         },
         query: QUERIES.getOrganizationDetails,

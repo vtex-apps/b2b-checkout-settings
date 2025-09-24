@@ -12,12 +12,12 @@
     "messages": "1.x",
     "node": "6.x",
     "react": "3.x",
-    "vtex.storefront-permissions": "2.x"
+    "vtex.storefront-permissions": "3.x"
   },
   "dependencies": {
     "vtex.graphql-server": "1.x",
     "vtex.styleguide": "9.x",
-    "vtex.b2b-organizations-graphql": "1.x"
+    "vtex.b2b-organizations-graphql": "2.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
