@@ -299,9 +299,110 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
           window.b2bCheckoutSettings = undefined
         }
       }, 500)
+
+      // Set up observer for Brazilian address form fix
+      const checkShippingForm = setInterval(function () {
+        const shippingContainer = document.querySelector('.shipping-container')
+
+        if (shippingContainer) {
+          clearInterval(checkShippingForm)
+
+          // Initial check
+          setTimeout(fixBrazilianAddressForm, 1000)
+
+          // Observe changes in the shipping container
+          const shippingObserver = new MutationObserver(function () {
+            fixBrazilianAddressForm()
+          })
+
+          shippingObserver.observe(shippingContainer, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class', 'style']
+          })
+        }
+      }, 500)
     }
     if (step.includes('payment') && b2bCheckoutSettings == undefined) {
       b2bCheckoutSettings = settings
+    }
+  }
+
+  // Flag to prevent multiple executions of the address form fix
+  let isFixingAddressForm = false
+
+  const fixBrazilianAddressForm = function () {
+    // Prevent multiple simultaneous executions
+    if (isFixingAddressForm) return
+
+    const [, step] = window.location.hash.split('/')
+    if (!step || !step.includes('shipping')) return
+
+    const countrySelect = document.getElementById('ship-country')
+    const postalCodeInput = document.getElementById('ship-postalCode')
+    const numberInput = document.getElementById('ship-number')
+    const newAddressButton = document.getElementById('new-address-button')
+
+    // Check if we have all required elements
+    if (!countrySelect || !postalCodeInput || !newAddressButton) return
+
+    // Check if country is Brazil and postal code is filled
+    const isBrazil = countrySelect.value === 'BRA'
+    const hasPostalCode = postalCodeInput.value && postalCodeInput.value.trim() !== ''
+
+    if (!isBrazil || !hasPostalCode) return
+    // Check if number input exists but is not visible
+    // The field might be hidden when address list is shown
+    const isNumberFieldHidden = numberInput && (
+      numberInput.offsetParent === null ||
+      window.getComputedStyle(numberInput).display === 'none' ||
+      window.getComputedStyle(numberInput.parentElement).display === 'none'
+    )
+
+    // Also check if address list is visible (indicates we're in the problematic state)
+    const addressList = document.querySelector('.address-list.vtex-omnishipping-1-x-addressList')
+    const isAddressListVisible = addressList && addressList.offsetParent !== null
+
+    // If we're showing the address list and number field is hidden, we need to fix it
+    if (isAddressListVisible && isNumberFieldHidden) {
+      console.log('B2B Checkout Settings: Fixing Brazilian address form - number field is hidden')
+
+      isFixingAddressForm = true
+      const currentPostalCode = postalCodeInput.value
+
+      // Click the "new address" button to show the form
+      newAddressButton.click()
+
+      // Wait for the form to appear, then re-fill the postal code
+      setTimeout(function() {
+        const postalCodeInputAfterClick = document.getElementById('ship-postalCode')
+
+        if (postalCodeInputAfterClick) {
+          // Clear and refill the postal code to trigger address lookup
+          postalCodeInputAfterClick.value = ''
+
+          setTimeout(function() {
+            postalCodeInputAfterClick.value = currentPostalCode
+
+            // Trigger all necessary events to activate VTEX validation
+            const events = ['input', 'change', 'blur']
+            events.forEach(function(eventType) {
+              const event = new Event(eventType, { bubbles: true })
+              postalCodeInputAfterClick.dispatchEvent(event)
+            })
+
+            console.log('B2B Checkout Settings: Brazilian address form fixed - postal code re-entered')
+
+            // Reset the flag after a delay to allow for re-execution if needed
+            setTimeout(function() {
+              isFixingAddressForm = false
+            }, 2000)
+          }, 300)
+        } else {
+          isFixingAddressForm = false
+        }
+      }, 500)
     }
   }
 
