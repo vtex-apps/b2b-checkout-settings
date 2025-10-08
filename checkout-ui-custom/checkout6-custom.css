@@ -54,3 +54,58 @@ body.can-checkout
 .v-custom-payment-item-wrap.active {
   border: 1px solid !important;
 }
+
+.address-form .input.required-field input#ship-number {
+  border-color: #ff6b6b !important;
+  border-width: 2px;
+}
+
+.address-form .input.required-field label[for="ship-number"]:after {
+  content: " *";
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.box-info .address-form {
+  display: block !important;
+}
+
+input#ship-number:invalid,
+input#ship-number:required:invalid {
+  border-color: #ff6b6b !important;
+  background-color: #fff5f5;
+}
+
+input#ship-number:required:valid {
+  border-color: #27ae60 !important;
+  background-color: #f0fff4;
+}
+
+.shipping-data .ship-number:has(input#ship-number:invalid),
+.shipping-data .ship-number:has(input#ship-number[value=""]),
+.shipping-data .ship-number:has(input#ship-number:placeholder-shown) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.shipping-data .ship-number input#ship-number:not([value]),
+.shipping-data .ship-number input#ship-number[value=""] {
+  display: block !important;
+}
+
+.shipping-data .ship-number label[for="ship-number"]:after {
+  content: " *";
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+input#ship-number.error {
+  border-color: #e74c3c !important;
+  border-width: 2px;
+  background-color: #fff5f5;
+}
+
+input#ship-number.error:focus {
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+}
