@@ -24,7 +24,6 @@ const CREDIT_CARDS = [
 const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 
 !(function () {
-  console.log('B2B Checkout Settings')
   let checkVtex = null
 
   const getTranslation = function () {
@@ -332,6 +331,45 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
   // Flag to prevent multiple executions of the address form fix
   let isFixingAddressForm = false
 
+  // Reset the fix flag after address form processing is complete
+  const resetFixFlag = function () {
+    isFixingAddressForm = false
+  }
+
+  // Trigger postal code validation by dispatching necessary events
+  const triggerPostalCodeValidation = function (postalCodeInput, postalCode) {
+    postalCodeInput.value = postalCode
+
+    // Trigger all necessary events to activate VTEX validation
+    const events = ['input', 'change', 'blur']
+    events.forEach(function (eventType) {
+      const event = new Event(eventType, { bubbles: true })
+      postalCodeInput.dispatchEvent(event)
+    })
+
+    // Reset the flag after VTEX completes validation (typically takes ~2s)
+    setTimeout(resetFixFlag, 2000)
+  }
+
+  // Handle the appearance of the new address form after clicking the button
+  const handleNewAddressFormAppearance = function (currentPostalCode) {
+    const postalCodeInput = document.getElementById('ship-postalCode')
+
+    if (!postalCodeInput) {
+      resetFixFlag()
+      return
+    }
+
+    // Clear the postal code first
+    postalCodeInput.value = ''
+
+    // Wait briefly, then refill to trigger address lookup
+    setTimeout(function () {
+      triggerPostalCodeValidation(postalCodeInput, currentPostalCode)
+    }, 300)
+  }
+
+  // Main function to detect and fix Brazilian address form issues
   const fixBrazilianAddressForm = function () {
     // Prevent multiple simultaneous executions
     if (isFixingAddressForm) return
@@ -345,20 +383,25 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
     const newAddressButton = document.getElementById('new-address-button')
 
     // Check if we have all required elements
-    if (!countrySelect || !postalCodeInput || !newAddressButton) return
+    if (!countrySelect || !postalCodeInput || !newAddressButton) {
+      return
+    }
 
     // Check if country is Brazil and postal code is filled
     const isBrazil = countrySelect.value === 'BRA'
     const hasPostalCode = postalCodeInput.value && postalCodeInput.value.trim() !== ''
 
-    if (!isBrazil || !hasPostalCode) return
+    if (!isBrazil || !hasPostalCode) {
+      return
+    }
+
     // Check if number input exists but is not visible
     // The field might be hidden when address list is shown
-    const isNumberFieldHidden = numberInput && (
-      numberInput.offsetParent === null ||
-      window.getComputedStyle(numberInput).display === 'none' ||
-      window.getComputedStyle(numberInput.parentElement).display === 'none'
-    )
+    const isNumberFieldHidden =
+      numberInput &&
+      (numberInput.offsetParent === null ||
+        window.getComputedStyle(numberInput).display === 'none' ||
+        window.getComputedStyle(numberInput.parentElement).display === 'none')
 
     // Also check if address list is visible (indicates we're in the problematic state)
     const addressList = document.querySelector('.address-list.vtex-omnishipping-1-x-addressList')
@@ -366,8 +409,6 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 
     // If we're showing the address list and number field is hidden, we need to fix it
     if (isAddressListVisible && isNumberFieldHidden) {
-      console.log('B2B Checkout Settings: Fixing Brazilian address form - number field is hidden')
-
       isFixingAddressForm = true
       const currentPostalCode = postalCodeInput.value
 
@@ -375,33 +416,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
       newAddressButton.click()
 
       // Wait for the form to appear, then re-fill the postal code
-      setTimeout(function() {
-        const postalCodeInputAfterClick = document.getElementById('ship-postalCode')
-
-        if (postalCodeInputAfterClick) {
-          // Clear and refill the postal code to trigger address lookup
-          postalCodeInputAfterClick.value = ''
-
-          setTimeout(function() {
-            postalCodeInputAfterClick.value = currentPostalCode
-
-            // Trigger all necessary events to activate VTEX validation
-            const events = ['input', 'change', 'blur']
-            events.forEach(function(eventType) {
-              const event = new Event(eventType, { bubbles: true })
-              postalCodeInputAfterClick.dispatchEvent(event)
-            })
-
-            console.log('B2B Checkout Settings: Brazilian address form fixed - postal code re-entered')
-
-            // Reset the flag after a delay to allow for re-execution if needed
-            setTimeout(function() {
-              isFixingAddressForm = false
-            }, 2000)
-          }, 300)
-        } else {
-          isFixingAddressForm = false
-        }
+      setTimeout(function () {
+        handleNewAddressFormAppearance(currentPostalCode)
       }, 500)
     }
   }
