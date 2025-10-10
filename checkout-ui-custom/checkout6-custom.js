@@ -63,6 +63,17 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         },
         clearCartLabel: 'Limpiar carrito',
       },
+      de: {
+        cartPurchaseOrderLabel: 'Referenz- oder Bestellnummer',
+        createQuoteButtonLabel: 'Angebot Anfordern',
+        messages: {
+          'b2b-access-denied': {
+            title: 'ZUGANG',
+            detail: 'Sie haben keinen Zugriff auf den Checkout',
+          },
+        },
+        clearCartLabel: 'Warenkorb leeren',
+      },
     }
 
     // default to EN if language not supported
