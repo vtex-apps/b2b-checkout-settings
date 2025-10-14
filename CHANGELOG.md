@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Show number input for Brazilian addresses in checkout
+
 ## [3.0.1] - 2025-10-06
 
 ### Added
