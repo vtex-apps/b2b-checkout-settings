@@ -1,7 +1,7 @@
 {
   "name": "b2b-checkout-settings",
   "vendor": "vtex",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "title": "B2B Checkout Settings",
   "description": "Adds B2B functionalities to the checkout",
   "builders": {
@@ -12,12 +12,12 @@
     "messages": "1.x",
     "node": "6.x",
     "react": "3.x",
-    "vtex.storefront-permissions": "2.x"
+    "vtex.storefront-permissions": "3.x"
   },
   "dependencies": {
     "vtex.graphql-server": "1.x",
     "vtex.styleguide": "9.x",
-    "vtex.b2b-organizations-graphql": "1.x"
+    "vtex.b2b-organizations-graphql": "2.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
@@ -45,6 +45,12 @@
     },
     {
       "name": "SaveOrderFormConfiguration"
+    },
+    {
+      "name": "buyer_organization_view"
+    },
+    {
+      "name": "buyer_organization_edit"
     },
     {
       "name": "outbound-access",
