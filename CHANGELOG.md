@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - German translations to checkout6-custom messages
 
+## [3.0.2] - 2025-10-14
+
+### Fixed
+- Show number input for Brazilian addresses in checkout
+
 ## [3.0.1] - 2025-10-06
 
 ### Added
