@@ -11,6 +11,7 @@ In B2B commerce, it is often necessary to provide customized options during chec
 
 The **B2B Checkout Settings** app works alongside other **B2B Suite** apps to extend the checkout experience for users who are members of organizations, adding all the above possibilities to the checkout page.
 
+> ⚠️ This specification applies to B2B Suite only.
 
 ## Before you start
 
