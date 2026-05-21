@@ -329,7 +329,7 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
             childList: true,
             subtree: true,
             attributes: true,
-            attributeFilter: ['class', 'style']
+            attributeFilter: ['class', 'style'],
           })
         }
       }, 500)
@@ -400,7 +400,8 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
 
     // Check if country is Brazil and postal code is filled
     const isBrazil = countrySelect.value === 'BRA'
-    const hasPostalCode = postalCodeInput.value && postalCodeInput.value.trim() !== ''
+    const hasPostalCode =
+      postalCodeInput.value && postalCodeInput.value.trim() !== ''
 
     if (!isBrazil || !hasPostalCode) {
       return
@@ -415,8 +416,11 @@ const MAX_TIME_EXPIRATION = 1000 * 60 * 5 // 5 minutes
         window.getComputedStyle(numberInput.parentElement).display === 'none')
 
     // Also check if address list is visible (indicates we're in the problematic state)
-    const addressList = document.querySelector('.address-list.vtex-omnishipping-1-x-addressList')
-    const isAddressListVisible = addressList && addressList.offsetParent !== null
+    const addressList = document.querySelector(
+      '.address-list.vtex-omnishipping-1-x-addressList'
+    )
+    const isAddressListVisible =
+      addressList && addressList.offsetParent !== null
 
     // If we're showing the address list and number field is hidden, we need to fix it
     if (isAddressListVisible && isNumberFieldHidden) {
